@@ -60,9 +60,6 @@ const getPaypalBearerToken = async():Promise<string|null> => {
 
 const payOrder = async(req: NextApiRequest, res: NextApiResponse<Data>) => {
 
-    // Todo: validar sesión del usuario
-    // TODO: validar mongoID
-
     const paypalBearerToken = await getPaypalBearerToken();
 
     if ( !paypalBearerToken ) {

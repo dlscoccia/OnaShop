@@ -51,40 +51,36 @@ interface Props {
 }
 
 const HistoryPage: NextPage<Props> = ({ orders }) => {
-
-    // const rows = ..  
-    // { id: indice + 1, paid: true, fullname: 'Fernando Herrera', orderId: 1283781237123 }
-    const rows = orders.map( (order, idx) => ({
-        id: idx + 1,
-        paid: order.isPaid,
-        fullname: `${ order.shippingAddress.firstName } ${ order.shippingAddress.lastName }`,
-        orderId: order._id
-    }))
+  const rows = orders.map((order, idx) => ({
+    id: idx + 1,
+    paid: order.isPaid,
+    fullname: `${order.shippingAddress.firstName} ${order.shippingAddress.lastName}`,
+    orderId: order._id,
+  }))
 
   return (
-    <ShopLayout title={'Historial de ordenes'} pageDescription={'Historial de ordenes del cliente'}>
-        <Typography variant='h1' component='h1'>Historial de ordenes</Typography>
+    <ShopLayout
+      title={'Historial de ordenes'}
+      pageDescription={'Historial de ordenes del cliente'}
+    >
+      <Typography variant='h1' component='h1'>
+        Historial de ordenes
+      </Typography>
 
-
-        <Grid container className='fadeIn'>
-            <Grid item xs={12} sx={{ height:650, width: '100%' }}>
-                <DataGrid 
-                    rows={ rows }
-                    columns={ columns }
-                    pageSize={ 10 }
-                    rowsPerPageOptions={ [10] }
-                />
-
-            </Grid>
+      <Grid container className='fadeIn'>
+        <Grid item xs={12} sx={{ height: 650, width: '100%' }}>
+          <DataGrid
+            rows={rows}
+            columns={columns}
+            pageSize={10}
+            rowsPerPageOptions={[10]}
+          />
         </Grid>
-
+      </Grid>
     </ShopLayout>
   )
 }
 
-
-// You should use getServerSideProps when:
-// - Only if you need to pre-render a page whose data must be fetched at request time
 
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
     

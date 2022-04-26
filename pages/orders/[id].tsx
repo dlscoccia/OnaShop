@@ -162,10 +162,7 @@ const OrderPage: NextPage<Props> = ({ order }) => {
                                             }}
                                             onApprove={(data, actions) => {
                                                 return actions.order!.capture().then((details) => {
-                                                    onOrderCompleted( details );
-                                                    // console.log({ details  })
-                                                    // const name = details.payer.name.given_name;
-                                                    // alert(`Transaction completed by ${name}`);
+                                                    onOrderCompleted(details)
                                                 });
                                             }}
                                         />
@@ -185,9 +182,6 @@ const OrderPage: NextPage<Props> = ({ order }) => {
   )
 }
 
-
-// You should use getServerSideProps when:
-// - Only if you need to pre-render a page whose data must be fetched at request time
 
 
 export const getServerSideProps: GetServerSideProps = async ({ req, query }) => {

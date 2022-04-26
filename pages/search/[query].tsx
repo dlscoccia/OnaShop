@@ -44,39 +44,32 @@ const SearchPage: NextPage<Props> = ({ products, foundProducts, query }) => {
 }
 
 
-
-// You should use getServerSideProps when:
-// - Only if you need to pre-render a page whose data must be fetched at request time
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-    
-    const { query = '' } = params as { query: string };
+  const { query = '' } = params as { query: string }
 
-    if ( query.length === 0 ) {
-        return {
-            redirect: {
-                destination: '/',
-                permanent: true
-            }
-        }
-    }
-
-    // y no hay productos
-    let products = await dbProducts.getProductsByTerm( query );
-    const foundProducts = products.length > 0;
-
-    // TODO: retornar otros productos
-    if ( !foundProducts ) {
-        // products = await dbProducts.getAllProducts(); 
-        products = await dbProducts.getProductsByTerm('shirt');
-    }
-
+  if (query.length === 0) {
     return {
-        props: {
-            products,
-            foundProducts,
-            query
-        }
+      redirect: {
+        destination: '/',
+        permanent: true,
+      },
     }
+  }
+
+  let products = await dbProducts.getProductsByTerm(query)
+  const foundProducts = products.length > 0
+
+  if (!foundProducts) {
+    products = await dbProducts.getProductsByTerm('shirt')
+  }
+
+  return {
+    props: {
+      products,
+      foundProducts,
+      query,
+    },
+  }
 }
 
 

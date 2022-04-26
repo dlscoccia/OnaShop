@@ -9,9 +9,12 @@ import { DashboardSummaryResponse } from '../../interfaces';
 
 const DashboardPage = () => {
 
-    const { data, error } = useSWR<DashboardSummaryResponse>('/api/admin/dashboard', {
-        refreshInterval: 30 * 1000 // 30 segundos
-    });
+    const { data, error } = useSWR<DashboardSummaryResponse>(
+      '/api/admin/dashboard',
+      {
+        refreshInterval: 30 * 1000,
+      }
+    )
 
     const [refreshIn, setRefreshIn] = useState(30);
 

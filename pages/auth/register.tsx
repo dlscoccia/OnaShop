@@ -32,23 +32,17 @@ const RegisterPage = () => {
     const [ errorMessage, setErrorMessage ] = useState('');
 
     const onRegisterForm = async( {  name, email, password }: FormData ) => {
-        
-        setShowError(false);
-        const { hasError, message } = await registerUser(name, email, password);
+      setShowError(false)
+      const { hasError, message } = await registerUser(name, email, password)
 
-        if ( hasError ) {
-            setShowError(true);
-            setErrorMessage( message! );
-            setTimeout(() => setShowError(false), 3000);
-            return;
-        }
-        
-        // Todo: navegar a la pantalla que el usuario estaba
-        // const destination = router.query.p?.toString() || '/';
-        // router.replace(destination);
+      if (hasError) {
+        setShowError(true)
+        setErrorMessage(message!)
+        setTimeout(() => setShowError(false), 3000)
+        return
+      }
 
-        await signIn('credentials',{ email, password });
-
+      await signIn('credentials', { email, password })
     }
 
     return (
@@ -144,7 +138,6 @@ const RegisterPage = () => {
 export const getServerSideProps: GetServerSideProps = async ({ req, query }) => {
     
     const session = await getSession({ req });
-    // console.log({session});
 
     const { p = '/' } = query;
 

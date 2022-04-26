@@ -24,7 +24,6 @@ export const UiProvider:FC = ({ children }) => {
         <UiContext.Provider value={{
             ...state,
 
-            // Methods
             toggleSideMenu,
         }}>
             { children }

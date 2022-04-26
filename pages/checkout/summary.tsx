@@ -7,8 +7,7 @@ import { Link, Box, Button, Card, CardContent, Divider, Grid, Typography, Chip }
 
 import { CartContext } from '../../context';
 import { ShopLayout } from '../../components/layouts/ShopLayout';
-import { CartList, OrderSummary } from '../../components/cart';
-// import { countries } from '../../utils';
+import { CartList, OrderSummary } from '../../components/cart'
 
 
 const SummaryPage = () => {

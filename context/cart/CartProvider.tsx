@@ -35,88 +35,98 @@ export const CartProvider:FC = ({ children }) => {
 
     const [state, dispatch] = useReducer( cartReducer , CART_INITIAL_STATE );
 
-    // Efecto
-    useEffect(() => {
-        try {
-            const cookieProducts = Cookie.get('cart') ? JSON.parse( Cookie.get('cart')! ): []
-            dispatch({ type: '[Cart] - LoadCart from cookies | storage', payload: cookieProducts });
-        } catch (error) {
-            dispatch({ type: '[Cart] - LoadCart from cookies | storage', payload: [] });
-        }
-    }, []);
-
 
     useEffect(() => {
-
-        if ( Cookie.get('firstName')){
-            const shippingAddress = {
-                firstName : Cookie.get('firstName') || '',
-                lastName  : Cookie.get('lastName') || '',
-                address   : Cookie.get('address') || '',
-                address2  : Cookie.get('address2') || '',
-                zip       : Cookie.get('zip') || '',
-                city      : Cookie.get('city') || '',
-                country   : Cookie.get('country') || '',
-                phone     : Cookie.get('phone') || '',
-            }
-            
-            dispatch({ type:'[Cart] - LoadAddress from Cookies', payload: shippingAddress })
-        }
+      try {
+        const cookieProducts = Cookie.get('cart')
+          ? JSON.parse(Cookie.get('cart')!)
+          : []
+        dispatch({
+          type: '[Cart] - LoadCart from cookies | storage',
+          payload: cookieProducts,
+        })
+      } catch (error) {
+        dispatch({
+          type: '[Cart] - LoadCart from cookies | storage',
+          payload: [],
+        })
+      }
     }, [])
-    
-
-
-    
-    useEffect(() => {
-      Cookie.set('cart', JSON.stringify( state.cart ));
-    }, [state.cart]);
-
 
     useEffect(() => {
-        
-        const numberOfItems = state.cart.reduce( ( prev, current ) => current.quantity + prev , 0 );
-        const subTotal = state.cart.reduce( ( prev, current ) => (current.price * current.quantity) + prev, 0 );
-        const taxRate =  Number(process.env.NEXT_PUBLIC_TAX_RATE || 0);
-    
-        const orderSummary = {
-            numberOfItems,
-            subTotal,
-            tax: subTotal * taxRate,
-            total: subTotal * ( taxRate + 1 )
+      if (Cookie.get('firstName')) {
+        const shippingAddress = {
+          firstName: Cookie.get('firstName') || '',
+          lastName: Cookie.get('lastName') || '',
+          address: Cookie.get('address') || '',
+          address2: Cookie.get('address2') || '',
+          zip: Cookie.get('zip') || '',
+          city: Cookie.get('city') || '',
+          country: Cookie.get('country') || '',
+          phone: Cookie.get('phone') || '',
         }
 
-        dispatch({ type: '[Cart] - Update order summary', payload: orderSummary });
-    }, [state.cart]);
+        dispatch({
+          type: '[Cart] - LoadAddress from Cookies',
+          payload: shippingAddress,
+        })
+      }
+    }, [])
 
+    useEffect(() => {
+      Cookie.set('cart', JSON.stringify(state.cart))
+    }, [state.cart])
 
+    useEffect(() => {
+      const numberOfItems = state.cart.reduce(
+        (prev, current) => current.quantity + prev,
+        0
+      )
+      const subTotal = state.cart.reduce(
+        (prev, current) => current.price * current.quantity + prev,
+        0
+      )
+      const taxRate = Number(process.env.NEXT_PUBLIC_TAX_RATE || 0)
 
-    const addProductToCart = ( product: ICartProduct ) => {
-        //! Nivel 1
-        // dispatch({ type: '[Cart] - Add Product', payload: product });
+      const orderSummary = {
+        numberOfItems,
+        subTotal,
+        tax: subTotal * taxRate,
+        total: subTotal * (taxRate + 1),
+      }
 
-        //! Nivel 2
-        // const productsInCart = state.cart.filter( p => p._id !== product._id && p.size !== product.size );
-        // dispatch({ type: '[Cart] - Add Product', payload: [...productsInCart, product] })
+      dispatch({ type: '[Cart] - Update order summary', payload: orderSummary })
+    }, [state.cart])
 
-        //! Nivel Final
-        const productInCart = state.cart.some( p => p._id === product._id );
-        if ( !productInCart ) return dispatch({ type: '[Cart] - Update products in cart', payload: [...state.cart, product ] })
+    const addProductToCart = (product: ICartProduct) => {
+      const productInCart = state.cart.some((p) => p._id === product._id)
+      if (!productInCart)
+        return dispatch({
+          type: '[Cart] - Update products in cart',
+          payload: [...state.cart, product],
+        })
 
-        const productInCartButDifferentSize = state.cart.some( p => p._id === product._id && p.size === product.size );
-        if ( !productInCartButDifferentSize ) return dispatch({ type: '[Cart] - Update products in cart', payload: [...state.cart, product ] })
+      const productInCartButDifferentSize = state.cart.some(
+        (p) => p._id === product._id && p.size === product.size
+      )
+      if (!productInCartButDifferentSize)
+        return dispatch({
+          type: '[Cart] - Update products in cart',
+          payload: [...state.cart, product],
+        })
 
-        // Acumular
-        const updatedProducts = state.cart.map( p => {
-            if ( p._id !== product._id ) return p;
-            if ( p.size !== product.size ) return p;
+      const updatedProducts = state.cart.map((p) => {
+        if (p._id !== product._id) return p
+        if (p.size !== product.size) return p
 
-            // Actualizar la cantidad
-            p.quantity += product.quantity;
-            return p;
-        });
+        p.quantity += product.quantity
+        return p
+      })
 
-        dispatch({ type: '[Cart] - Update products in cart', payload: updatedProducts });
-
+      dispatch({
+        type: '[Cart] - Update products in cart',
+        payload: updatedProducts,
+      })
     }
 
     const updateCartQuantity = ( product: ICartProduct ) => {
@@ -190,19 +200,19 @@ export const CartProvider:FC = ({ children }) => {
 
 
     return (
-        <CartContext.Provider value={{
-            ...state,
+      <CartContext.Provider
+        value={{
+          ...state,
 
-            // Methods
-            addProductToCart,
-            removeCartProduct,
-            updateCartQuantity,
-            updateAddress,
+          addProductToCart,
+          removeCartProduct,
+          updateCartQuantity,
+          updateAddress,
 
-            // Orders
-            createOrder,
-        }}>
-            { children }
-        </CartContext.Provider>
+          createOrder,
+        }}
+      >
+        {children}
+      </CartContext.Provider>
     )
 };

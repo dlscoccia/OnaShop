@@ -8,14 +8,11 @@ export const signToken = ( _id: string, email: string ) => {
     }
 
     return jwt.sign(
-        // payload
-        { _id, email },
+      { _id, email },
 
-        // Seed
-        process.env.JWT_SECRET_SEED,
+      process.env.JWT_SECRET_SEED,
 
-        // Opciones
-        { expiresIn: '30d' }
+      { expiresIn: '30d' }
     )
 
 }
