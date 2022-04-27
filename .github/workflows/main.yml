@@ -25,9 +25,19 @@ jobs:
     - name: Build
       env:
         ## Environment variable for step 1
-        MONGO_URL: ${{secrets.MONGO_URL}} 
+        MONGO_URL: ${{secrets.MONGO_URL}}
+        JWT_SECRET_SEED: ${{secrets.JWT_SECRET_SEED}}
+        NEXTAUTH_SECRET: ${{secrets.NEXTAUTH_SECRET}}
+        NEXT_PUBLIC_TAX_RATE: ${{secrets.NEXT_PUBLIC_TAX_RATE}}
+        GITHUB_ID: ${{secrets.GITHUB_ID}}
+        GITHUB_SECRET: ${{secrets.GITHUB_SECRET}}
+        NEXT_PUBLIC_PAYPAL_CLIENT_ID: ${{secrets.NEXT_PUBLIC_PAYPAL_CLIENT_ID}}
+        PAYPAL_SECRET: ${{secrets.PAYPAL_SECRET}}
+        PAYPAL_OAUTH_URL: ${{secrets.PAYPAL_OAUTH_URL}}
+        PAYPAL_ORDERS_URL: ${{secrets.PAYPAL_ORDERS_URL}}
+        CLOUDINARY_URL: ${{secrets.CLOUDINARY_URL}}
       run: |
         yarn install
         yarn build
-
+        yarn deploy
         
