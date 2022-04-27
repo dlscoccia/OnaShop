@@ -6,7 +6,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "deploy": "git add . && git commit -m 'deploy' && git push"
+    "git:push": "git add . && git commit -m 'deploy' && git push heroku main",
+    "deploy": "git add . && git commit -m 'deploy' && git push heroku main"
   },
   "dependencies": {
     "@emotion/react": "^11.7.1",
