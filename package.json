@@ -6,10 +6,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "git:push": "git add . && git commit -m 'deploy' && git push heroku main",
-    "deploy": "git add . && git commit -m 'deploy' && git push heroku main",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
     "prepare": "husky install",
-    "pre-commit": "yarn lint"
+    "pre-commit": "yarn lint && yarn test:coverage"
   },
   "dependencies": {
     "@emotion/react": "^11.7.1",
@@ -35,13 +35,23 @@
     "swr": "^1.2.1"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-typescript": "^7.16.7",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.1.1",
     "@types/formidable": "^2.0.4",
+    "@types/jest": "^27.4.1",
     "@types/js-cookie": "^3.0.1",
     "@types/jsonwebtoken": "^8.5.8",
     "@types/node": "17.0.17",
     "@types/react": "17.0.39",
     "@typescript-eslint/eslint-plugin": "^5.21.0",
     "@typescript-eslint/parser": "^5.21.0",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.7",
+    "babel-jest": "^28.0.2",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.6",
+    "enzyme-to-json": "^3.6.2",
     "eslint": "^8.14.0",
     "eslint-config-next": "12.0.10",
     "eslint-config-prettier": "^8.5.0",
@@ -51,7 +61,11 @@
     "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-react-hooks": "^4.5.0",
     "husky": "^7.0.4",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^28.0.2",
+    "jest-canvas-mock": "^2.3.1",
     "prettier": "^2.6.2",
+    "ts-node": "^10.7.0",
     "typescript": "4.5.5"
   }
 }

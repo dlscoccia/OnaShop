@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders homepage unchanged 1`] = `
+<ShopLayout
+  pageDescription="Find the trendy products here!"
+  title="Ona Shop - Home"
+>
+  <Image
+    alt="hero banner"
+    src={null}
+  />
+  <ForwardRef(Typography)
+    component="h1"
+    variant="h1"
+  >
+    Tienda
+  </ForwardRef(Typography)>
+  <ForwardRef(Typography)
+    sx={
+      Object {
+        "mb": 1,
+      }
+    }
+    variant="h2"
+  >
+    Todos los productos
+  </ForwardRef(Typography)>
+  <FullScreenLoading />
+</ShopLayout>
+`;
