@@ -25,7 +25,7 @@ jobs:
     - name: Build
       env:
         ## Environment variable for step 1
-        API_KEY: ${{secrets.MONGO_URL}} 
+        MONGO_URL: ${{secrets.MONGO_URL}} 
       run: |
         yarn install
         yarn build
