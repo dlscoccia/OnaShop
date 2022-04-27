@@ -1,7 +1,7 @@
-import { ChangeEvent, FC, useEffect, useRef, useState } from 'react'
-import { GetServerSideProps } from 'next'
-import { useRouter } from 'next/router'
-import { useForm } from 'react-hook-form'
+import { ChangeEvent, FC, useEffect, useRef, useState } from 'react';
+import { GetServerSideProps } from 'next';
+import { useRouter } from 'next/router';
+import { useForm } from 'react-hook-form';
 
 import {
   Box,
@@ -23,22 +23,22 @@ import {
   Radio,
   RadioGroup,
   TextField,
-} from '@mui/material'
+} from '@mui/material';
 import {
   DriveFileRenameOutline,
   SaveOutlined,
   UploadOutlined,
-} from '@mui/icons-material'
+} from '@mui/icons-material';
 
-import { AdminLayout } from '../../../components/layouts'
-import { IProduct } from '../../../interfaces'
-import { dbProducts } from '../../../database'
-import { tesloApi } from '../../../api'
-import { Product } from '../../../models'
+import { AdminLayout } from '../../../components/layouts';
+import { IProduct } from '../../../interfaces';
+import { dbProducts } from '../../../database';
+import { tesloApi } from '../../../api';
+import { Product } from '../../../models';
 
-const validTypes = ['shirts', 'pants', 'hoodies', 'hats']
-const validGender = ['men', 'women', 'kid', 'unisex']
-const validSizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL', 'XXXL']
+const validTypes = ['shirts', 'pants', 'hoodies', 'hats'];
+const validGender = ['men', 'women', 'kid', 'unisex'];
+const validSizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL', 'XXXL'];
 
 interface FormData {
   _id?: string
@@ -59,10 +59,10 @@ interface Props {
 }
 
 const ProductAdminPage: FC<Props> = ({ product }) => {
-  const router = useRouter()
-  const fileInputRef = useRef<HTMLInputElement>(null)
-  const [newTagValue, setNewTagValue] = useState('')
-  const [isSaving, setIsSaving] = useState(false)
+  const router = useRouter();
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [newTagValue, setNewTagValue] = useState('');
+  const [isSaving, setIsSaving] = useState(false);
 
   const {
     register,
@@ -73,7 +73,7 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
     watch,
   } = useForm<FormData>({
     defaultValues: product,
-  })
+  });
 
   useEffect(() => {
     const subscription = watch((value, { name, type }) => {
@@ -83,96 +83,96 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
             ?.trim()
             .replaceAll(' ', '_')
             .replaceAll("'", '')
-            .toLocaleLowerCase() || ''
+            .toLocaleLowerCase() || '';
 
-        setValue('slug', newSlug)
+        setValue('slug', newSlug);
       }
-    })
-    return () => subscription.unsubscribe()
-  }, [watch, setValue])
+    });
+    return () => subscription.unsubscribe();
+  }, [watch, setValue]);
 
   const onChangeSize = (size: string) => {
-    const currentSizes = getValues('sizes')
+    const currentSizes = getValues('sizes');
     if (currentSizes.includes(size)) {
       return setValue(
         'sizes',
         currentSizes.filter((s) => s !== size),
-        { shouldValidate: true }
-      )
+        { shouldValidate: true },
+      );
     }
 
-    setValue('sizes', [...currentSizes, size], { shouldValidate: true })
-  }
+    setValue('sizes', [...currentSizes, size], { shouldValidate: true });
+  };
 
   const onNewTag = () => {
-    const newTag = newTagValue.trim().toLocaleLowerCase()
-    setNewTagValue('')
-    const currentTags = getValues('tags')
+    const newTag = newTagValue.trim().toLocaleLowerCase();
+    setNewTagValue('');
+    const currentTags = getValues('tags');
 
     if (currentTags.includes(newTag)) {
-      return
+      return;
     }
 
-    currentTags.push(newTag)
-  }
+    currentTags.push(newTag);
+  };
 
   const onDeleteTag = (tag: string) => {
-    const updatedTags = getValues('tags').filter((t) => t !== tag)
-    setValue('tags', updatedTags, { shouldValidate: true })
-  }
+    const updatedTags = getValues('tags').filter((t) => t !== tag);
+    setValue('tags', updatedTags, { shouldValidate: true });
+  };
 
   const onFilesSelected = async ({ target }: ChangeEvent<HTMLInputElement>) => {
     if (!target.files || target.files.length === 0) {
-      return
+      return;
     }
 
     try {
       for (const file of target.files) {
-        const formData = new FormData()
-        formData.append('file', file)
+        const formData = new FormData();
+        formData.append('file', file);
         const { data } = await tesloApi.post<{ message: string }>(
           '/admin/upload',
-          formData
-        )
+          formData,
+        );
         setValue('images', [...getValues('images'), data.message], {
           shouldValidate: true,
-        })
+        });
       }
     } catch (error) {
-      console.log({ error })
+      console.log({ error });
     }
-  }
+  };
 
   const onDeleteImage = (image: string) => {
     setValue(
       'images',
       getValues('images').filter((img) => img !== image),
-      { shouldValidate: true }
-    )
-  }
+      { shouldValidate: true },
+    );
+  };
 
   const onSubmit = async (form: FormData) => {
-    if (form.images.length < 2) return alert('Mínimo 2 imagenes')
-    setIsSaving(true)
+    if (form.images.length < 2) return alert('Mínimo 2 imagenes');
+    setIsSaving(true);
 
     try {
       const { data } = await tesloApi({
         url: '/admin/products',
         method: form._id ? 'PUT' : 'POST',
         data: form,
-      })
+      });
 
-      console.log({ data })
+      console.log({ data });
       if (!form._id) {
-        router.replace(`/admin/products/${form.slug}`)
+        router.replace(`/admin/products/${form.slug}`);
       } else {
-        setIsSaving(false)
+        setIsSaving(false);
       }
     } catch (error) {
-      console.log(error)
-      setIsSaving(false)
+      console.log(error);
+      setIsSaving(false);
     }
-  }
+  };
 
   return (
     <AdminLayout
@@ -356,7 +356,7 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
                     size='small'
                     sx={{ ml: 1, mt: 1 }}
                   />
-                )
+                );
               })}
             </Box>
 
@@ -419,21 +419,21 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
         </Grid>
       </form>
     </AdminLayout>
-  )
-}
+  );
+};
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  const { slug = '' } = query
+  const { slug = '' } = query;
 
-  let product: IProduct | null
+  let product: IProduct | null;
 
   if (slug === 'new') {
-    const tempProduct = JSON.parse(JSON.stringify(new Product()))
-    delete tempProduct._id
-    tempProduct.images = ['img1.jpg', 'img2.jpg']
-    product = tempProduct
+    const tempProduct = JSON.parse(JSON.stringify(new Product()));
+    delete tempProduct._id;
+    tempProduct.images = ['img1.jpg', 'img2.jpg'];
+    product = tempProduct;
   } else {
-    product = await dbProducts.getProductBySlug(slug.toString())
+    product = await dbProducts.getProductBySlug(slug.toString());
   }
 
   if (!product) {
@@ -442,14 +442,14 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
         destination: '/admin/products',
         permanent: false,
       },
-    }
+    };
   }
 
   return {
     props: {
       product,
     },
-  }
-}
+  };
+};
 
-export default ProductAdminPage
+export default ProductAdminPage;

@@ -30,7 +30,7 @@ const HomePage: NextPage = () => {
     
 
     </ShopLayout>
-  )
-}
+  );
+};
 
-export default HomePage
+export default HomePage;

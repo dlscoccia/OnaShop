@@ -1,5 +1,5 @@
 import type { NextPage, GetServerSideProps } from 'next';
-import { Typography,Box } from '@mui/material';
+import { Typography, Box } from '@mui/material';
 
 import { ShopLayout } from '../../components/layouts';
 
@@ -10,9 +10,9 @@ import { IProduct } from '../../interfaces';
 
 
 interface Props {
-    products: IProduct[];
-    foundProducts: boolean;
-    query: string;
+  products: IProduct[];
+  foundProducts: boolean;
+  query: string;
 }
 
 
@@ -25,13 +25,13 @@ const SearchPage: NextPage<Props> = ({ products, foundProducts, query }) => {
 
         {
             foundProducts 
-                ? <Typography variant='h2' sx={{ mb: 1 }} textTransform="capitalize">Término: { query }</Typography>
-                : (
+              ? <Typography variant='h2' sx={{ mb: 1 }} textTransform="capitalize">Término: { query }</Typography>
+              : (
                     <Box display='flex'>
                         <Typography variant='h2' sx={{ mb: 1 }}>No encontramos ningún produto</Typography>
                         <Typography variant='h2' sx={{ ml: 1 }} color="secondary" textTransform="capitalize">{ query }</Typography>
                     </Box>
-                )
+              )
         }
 
         
@@ -40,12 +40,12 @@ const SearchPage: NextPage<Props> = ({ products, foundProducts, query }) => {
         <ProductList products={ products } />
         
     </ShopLayout>
-  )
-}
+  );
+};
 
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-  const { query = '' } = params as { query: string }
+  const { query = '' } = params as { query: string };
 
   if (query.length === 0) {
     return {
@@ -53,14 +53,14 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
         destination: '/',
         permanent: true,
       },
-    }
+    };
   }
 
-  let products = await dbProducts.getProductsByTerm(query)
-  const foundProducts = products.length > 0
+  let products = await dbProducts.getProductsByTerm(query);
+  const foundProducts = products.length > 0;
 
   if (!foundProducts) {
-    products = await dbProducts.getProductsByTerm('shirt')
+    products = await dbProducts.getProductsByTerm('shirt');
   }
 
   return {
@@ -69,8 +69,8 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
       foundProducts,
       query,
     },
-  }
-}
+  };
+};
 
 
-export default SearchPage
+export default SearchPage;

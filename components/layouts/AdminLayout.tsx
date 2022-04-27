@@ -6,9 +6,9 @@ import { SideMenu } from '../ui';
 
 
 interface Props {
-    title: string;
-    subTitle: string;
-    icon?: JSX.Element;
+  title: string;
+  subTitle: string;
+  icon?: JSX.Element;
 }
 
 export const AdminLayout:FC<Props> = ({ children, title, subTitle, icon }) => {
@@ -22,9 +22,9 @@ export const AdminLayout:FC<Props> = ({ children, title, subTitle, icon }) => {
         <SideMenu />
 
         <main style={{
-            margin: '80px auto',
-            maxWidth: '1440px',
-            padding: '0px 30px'
+          margin: '80px auto',
+          maxWidth: '1440px',
+          padding: '0px 30px',
         }}>
 
             <Box display="flex" flexDirection='column'>
@@ -44,7 +44,7 @@ export const AdminLayout:FC<Props> = ({ children, title, subTitle, icon }) => {
 
 
     </>
-  )
-}
+  );
+};
 
 

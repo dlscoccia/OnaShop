@@ -30,7 +30,7 @@ const KidPage: NextPage = () => {
     
 
     </ShopLayout>
-  )
-}
+  );
+};
 
-export default KidPage
+export default KidPage;

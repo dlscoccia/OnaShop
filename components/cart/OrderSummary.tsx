@@ -5,19 +5,19 @@ import { currency } from '../../utils';
 
 
 interface Props {
-    orderValues?: {
-        numberOfItems: number;
-        subTotal: number;
-        total: number;
-        tax: number;
-    }
+  orderValues?: {
+    numberOfItems: number;
+    subTotal: number;
+    total: number;
+    tax: number;
+  }
 }
 
 export const OrderSummary: FC<Props> = ({ orderValues }) => {
     
-    const { numberOfItems, subTotal, total, tax } = useContext( CartContext );
+  const { numberOfItems, subTotal, total, tax } = useContext( CartContext );
     
-    const summaryValues = orderValues ? orderValues : { numberOfItems, subTotal, total, tax };
+  const summaryValues = orderValues ? orderValues : { numberOfItems, subTotal, total, tax };
   
     
 
@@ -28,7 +28,7 @@ export const OrderSummary: FC<Props> = ({ orderValues }) => {
             <Typography>No. Productos</Typography>
         </Grid>
         <Grid item xs={6} display='flex' justifyContent='end'>
-            <Typography>{summaryValues.numberOfItems} { summaryValues.numberOfItems > 1 ? 'productos': 'producto' }</Typography>
+            <Typography>{summaryValues.numberOfItems} { summaryValues.numberOfItems > 1 ? 'productos' : 'producto' }</Typography>
         </Grid>
 
         <Grid item xs={6}>
@@ -53,5 +53,5 @@ export const OrderSummary: FC<Props> = ({ orderValues }) => {
         </Grid>
 
     </Grid>
-  )
-}
+  );
+};

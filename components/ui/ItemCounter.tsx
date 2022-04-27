@@ -22,7 +22,7 @@ export const ItemCounter:FC<Props> = ({ currentValue, updatedQuantity, maxValue 
     if ( currentValue >= maxValue ) return;
 
     updatedQuantity( currentValue + 1 );
-  }
+  };
   
 
   return (
@@ -35,5 +35,5 @@ export const ItemCounter:FC<Props> = ({ currentValue, updatedQuantity, maxValue 
             <AddCircleOutline />
         </IconButton>
     </Box>
-  )
-}
+  );
+};

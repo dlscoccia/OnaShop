@@ -1,26 +1,26 @@
 import { FC, useMemo, useState } from 'react';
 import NextLink from 'next/link';
-import { Grid, Card, CardActionArea, CardMedia, Box, Typography, Link, Chip } from '@mui/material'
+import { Grid, Card, CardActionArea, CardMedia, Box, Typography, Link, Chip } from '@mui/material';
 
-import { IProduct } from '../../interfaces'
+import { IProduct } from '../../interfaces';
 
 interface Props {
-    product: IProduct;
+  product: IProduct;
 }
 
 export const ProductCard: FC<Props> = ({ product }) => {
 
-    const [isHovered, setIsHovered] = useState(false);
-    const [isImageLoaded, setIsImageLoaded] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
 
-    const productImage = useMemo(() => {
-        return isHovered
-          ? product.images[1]
-          : product.images[0];
+  const productImage = useMemo(() => {
+    return isHovered
+      ? product.images[1]
+      : product.images[0];
 
-    }, [isHovered, product.images])
+  }, [isHovered, product.images]);
 
-    return (
+  return (
       <Grid item 
             xs={6} 
             sm={ 4 }
@@ -62,5 +62,5 @@ export const ProductCard: FC<Props> = ({ product }) => {
               <Typography fontWeight={500}>{ `$${product.price}` }</Typography>
           </Box>
       </Grid>
-    )
-}
+  );
+};

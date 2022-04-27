@@ -1,5 +1,5 @@
-import { Box, CircularProgress, Typography } from '@mui/material'
-import React from 'react'
+import { Box, CircularProgress, Typography } from '@mui/material';
+import React from 'react';
 
 export const FullScreenLoading = () => {
   return (
@@ -13,5 +13,5 @@ export const FullScreenLoading = () => {
         <Typography sx={{ mb: 3 }} variant="h2" fontWeight={ 200 } fontSize={ 20 }>Cargando...</Typography>
         <CircularProgress thickness={ 2 } />
     </Box>
-  )
-}
+  );
+};

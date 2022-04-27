@@ -4,14 +4,14 @@ import { ISize } from '../../interfaces';
 
 
 interface Props {
-    selectedSize?: ISize;
-    sizes: ISize[];
+  selectedSize?: ISize;
+  sizes: ISize[];
 
-    onSelectedSize: (size: ISize ) => void;
+  onSelectedSize: (size: ISize ) => void;
 }
 
 
-export const SizeSelector: FC<Props> = ({selectedSize, sizes, onSelectedSize }) => {
+export const SizeSelector: FC<Props> = ({ selectedSize, sizes, onSelectedSize }) => {
   return (
     <Box>
         {
@@ -27,5 +27,5 @@ export const SizeSelector: FC<Props> = ({selectedSize, sizes, onSelectedSize }) 
             ))
         }
     </Box>
-  )
-}
+  );
+};

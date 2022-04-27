@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { Box } from '@mui/material';
 
 interface Props {
-    title: string;
+  title: string;
 }
 
 export const AuthLayout: FC<Props> = ({ children, title  }) => {
@@ -20,5 +20,5 @@ export const AuthLayout: FC<Props> = ({ children, title  }) => {
         </main>
     
     </>
-  )
-}
+  );
+};

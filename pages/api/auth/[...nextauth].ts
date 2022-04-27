@@ -21,12 +21,12 @@ export default NextAuth({
         },
       },
       async authorize(credentials) {
-        console.log({ credentials })
+        console.log({ credentials });
 
-        return await dbUsers.checkUserEmailPassword(
+        return dbUsers.checkUserEmailPassword(
           credentials!.email,
-          credentials!.password
-        )
+          credentials!.password,
+        );
       },
     }),
 
@@ -49,30 +49,30 @@ export default NextAuth({
   callbacks: {
     async jwt({ token, account, user }) {
       if (account) {
-        token.accessToken = account.access_token
+        token.accessToken = account.access_token;
 
         switch (account.type) {
           case 'oauth':
             token.user = await dbUsers.oAUthToDbUser(
               user?.email || '',
-              user?.name || ''
-            )
-            break
+              user?.name || '',
+            );
+            break;
 
           case 'credentials':
-            token.user = user
-            break
+            token.user = user;
+            break;
         }
       }
 
-      return token
+      return token;
     },
 
     async session({ session, token, user }) {
-      session.accessToken = token.accessToken
-      session.user = token.user as any
+      session.accessToken = token.accessToken;
+      session.user = token.user as any;
 
-      return session
+      return session;
     },
   },
-})
+});

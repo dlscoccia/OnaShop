@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { GetServerSideProps } from 'next'
+import { GetServerSideProps } from 'next';
 import NextLink from 'next/link';
 import { signIn, getSession, getProviders } from 'next-auth/react';
 
@@ -7,39 +7,39 @@ import { Box, Button, Chip, Divider, Grid, Link, TextField, Typography } from '@
 import { ErrorOutline } from '@mui/icons-material';
 import { useForm } from 'react-hook-form';
 
-import { AuthLayout } from '../../components/layouts'
+import { AuthLayout } from '../../components/layouts';
 import { validations } from '../../utils';
 import { useRouter } from 'next/router';
 
 
 type FormData = {
-    email   : string,
-    password: string,
+  email   : string,
+  password: string,
 };
 
 
 const LoginPage = () => {
-  const router = useRouter()
+  const router = useRouter();
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormData>()
-  const [showError, setShowError] = useState(false)
+  } = useForm<FormData>();
+  const [showError, setShowError] = useState(false);
 
-  const [providers, setProviders] = useState<any>({})
+  const [providers, setProviders] = useState<any>({});
 
   useEffect(() => {
     getProviders().then((prov) => {
-      setProviders(prov)
-    })
-  }, [])
+      setProviders(prov);
+    });
+  }, []);
 
   const onLoginUser = async ({ email, password }: FormData) => {
-    setShowError(false)
-    await signIn('credentials', { email, password })
-  }
+    setShowError(false);
+    await signIn('credentials', { email, password });
+  };
 
   return (
     <AuthLayout title={'Ingresar'}>
@@ -123,7 +123,7 @@ const LoginPage = () => {
               <Divider sx={{ width: '100%', mb: 2 }} />
               {Object.values(providers).map((provider: any) => {
                 if (provider.id === 'credentials')
-                  return <div key='credentials'></div>
+                  return <div key='credentials'></div>;
 
                 return (
                   <Button
@@ -136,39 +136,39 @@ const LoginPage = () => {
                   >
                     {provider.name}
                   </Button>
-                )
+                );
               })}
             </Grid>
           </Grid>
         </Box>
       </form>
     </AuthLayout>
-  )
-}
+  );
+};
 
 
 export const getServerSideProps: GetServerSideProps = async ({ req, query }) => {
     
-    const session = await getSession({ req });
+  const session = await getSession({ req });
 
 
-    const { p = '/' } = query;
+  const { p = '/' } = query;
 
-    if ( session ) {
-        return {
-            redirect: {
-                destination: p.toString(),
-                permanent: false
-            }
-        }
-    }
-
-
+  if ( session ) {
     return {
-        props: { }
-    }
-}
+      redirect: {
+        destination: p.toString(),
+        permanent: false,
+      },
+    };
+  }
+
+
+  return {
+    props: { },
+  };
+};
 
 
 
-export default LoginPage
+export default LoginPage;

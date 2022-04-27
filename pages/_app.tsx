@@ -1,6 +1,6 @@
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
-import { SessionProvider } from 'next-auth/react'
+import { SessionProvider } from 'next-auth/react';
 import { PayPalScriptProvider } from '@paypal/react-paypal-js';
 
 
@@ -18,7 +18,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       
         <SWRConfig 
           value={{
-            fetcher: (resource, init) => fetch(resource, init).then(res => res.json())
+            fetcher: (resource, init) => fetch(resource, init).then(res => res.json()),
           }}
         >
           <AuthProvider>
@@ -35,7 +35,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
       </PayPalScriptProvider>
     </SessionProvider>
-  )
+  );
 }
 
-export default MyApp
+export default MyApp;

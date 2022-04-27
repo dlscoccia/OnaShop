@@ -9,10 +9,10 @@ import { UiContext } from '../../context';
 
 export const AdminNavbar = () => {
 
-    const { toggleSideMenu } = useContext( UiContext );
+  const { toggleSideMenu } = useContext( UiContext );
     
 
-    return (
+  return (
         <AppBar>
             <Toolbar>
                 <NextLink href='/' passHref>
@@ -30,5 +30,5 @@ export const AdminNavbar = () => {
 
             </Toolbar>
         </AppBar>
-    )
-}
+  );
+};

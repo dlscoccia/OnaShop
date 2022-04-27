@@ -30,7 +30,7 @@ const WomenPage: NextPage = () => {
     
 
     </ShopLayout>
-  )
-}
+  );
+};
 
-export default WomenPage
+export default WomenPage;

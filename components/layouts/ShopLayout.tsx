@@ -5,9 +5,9 @@ import { Navbar, SideMenu } from '../ui';
 
 
 interface Props {
-    title: string;
-    pageDescription: string;
-    imageFullUrl?: string;
+  title: string;
+  pageDescription: string;
+  imageFullUrl?: string;
 }
 
 export const ShopLayout:FC<Props> = ({ children, title, pageDescription, imageFullUrl }) => {
@@ -37,9 +37,9 @@ export const ShopLayout:FC<Props> = ({ children, title, pageDescription, imageFu
         <SideMenu />
 
         <main style={{
-            margin: '80px auto',
-            maxWidth: '1440px',
-            padding: '0px 30px'
+          margin: '80px auto',
+          maxWidth: '1440px',
+          padding: '0px 30px',
         }}>
             { children }
         </main>
@@ -50,7 +50,7 @@ export const ShopLayout:FC<Props> = ({ children, title, pageDescription, imageFu
         </footer>
 
     </>
-  )
-}
+  );
+};
 
 

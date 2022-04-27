@@ -1,5 +1,5 @@
 import { useState, useContext } from 'react';
-import { NextPage, GetServerSideProps, GetStaticPaths, GetStaticProps } from 'next';
+import { NextPage, GetStaticPaths, GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
 
 import { Box, Button, Chip, Grid, Typography } from '@mui/material';
@@ -23,7 +23,7 @@ interface Props {
 const ProductPage:NextPage<Props> = ({ product }) => {
 
   const router = useRouter();
-  const { addProductToCart } = useContext( CartContext )
+  const { addProductToCart } = useContext( CartContext );
 
   const [tempCartProduct, setTempCartProduct] = useState<ICartProduct>({
     _id: product._id,
@@ -34,21 +34,21 @@ const ProductPage:NextPage<Props> = ({ product }) => {
     title: product.title,
     gender: product.gender,
     quantity: 1,
-  })
+  });
 
   const selectedSize = ( size: ISize ) => {
     setTempCartProduct( currentProduct => ({
       ...currentProduct,
-      size
+      size,
     }));
-  }
+  };
 
   const onUpdateQuantity = ( quantity: number ) => {
     setTempCartProduct( currentProduct => ({
       ...currentProduct,
-      quantity
+      quantity,
     }));
-  }
+  };
 
 
   const onAddProduct = () => {
@@ -57,7 +57,7 @@ const ProductPage:NextPage<Props> = ({ product }) => {
 
     addProductToCart(tempCartProduct);
     router.push('/cart');
-  }
+  };
 
 
   return (
@@ -84,7 +84,7 @@ const ProductPage:NextPage<Props> = ({ product }) => {
               <ItemCounter 
                 currentValue={ tempCartProduct.quantity }
                 updatedQuantity={ onUpdateQuantity  }
-                maxValue={ product.inStock > 10 ? 10: product.inStock }
+                maxValue={ product.inStock > 10 ? 10 : product.inStock }
               />
               <SizeSelector 
 
@@ -96,7 +96,7 @@ const ProductPage:NextPage<Props> = ({ product }) => {
 
             {
               (product.inStock > 0)
-               ? (
+                ? (
                   <Button 
                     color="secondary" 
                     className='circular-btn'
@@ -108,10 +108,10 @@ const ProductPage:NextPage<Props> = ({ product }) => {
                         : 'Seleccione una talla'
                     }
                   </Button>
-               )
-               : (
+                )
+                : (
                  <Chip label="No hay disponibles" color="error" variant='outlined' />
-               )
+                )
             }
 
             <Box sx={{ mt:3 }}>
@@ -126,8 +126,8 @@ const ProductPage:NextPage<Props> = ({ product }) => {
       </Grid>
 
     </ShopLayout>
-  )
-}
+  );
+};
 
 
 export const getStaticPaths: GetStaticPaths = async (ctx) => {
@@ -138,12 +138,12 @@ export const getStaticPaths: GetStaticPaths = async (ctx) => {
   return {
     paths: productSlugs.map( ({ slug }) => ({
       params: {
-        slug
-      }
+        slug,
+      },
     })),
-    fallback: 'blocking'
-  }
-}
+    fallback: 'blocking',
+  };
+};
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   
@@ -154,17 +154,17 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     return {
       redirect: {
         destination: '/',
-        permanent: false
-      }
-    }
+        permanent: false,
+      },
+    };
   }
 
   return {
     props: {
-      product
+      product,
     },
-    revalidate: 60 * 60 * 24
-  }
-}
+    revalidate: 60 * 60 * 24,
+  };
+};
 
-export default ProductPage
+export default ProductPage;

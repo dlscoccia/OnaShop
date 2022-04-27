@@ -10,25 +10,25 @@ import { AdminLayout } from '../../../components/layouts';
 
 
 interface Props {
-    order: IOrder;
+  order: IOrder;
 }
 
 const OrderPage: NextPage<Props> = ({ order }) => {
 
 
-    const { shippingAddress } = order;
+  const { shippingAddress } = order;
 
 
   return (
     <AdminLayout
-      title='Resumen de la orden'
+      title='Order Summary'
       subTitle={`OrdenId: ${order._id}`}
       icon={<AirplaneTicketOutlined />}
     >
       {order.isPaid ? (
         <Chip
           sx={{ my: 2 }}
-          label='Order is paid'
+          label='Order was already paid'
           variant='outlined'
           color='success'
           icon={<CreditScoreOutlined />}
@@ -36,7 +36,7 @@ const OrderPage: NextPage<Props> = ({ order }) => {
       ) : (
         <Chip
           sx={{ my: 2 }}
-          label='Pendiente de pago'
+          label='Pending payment'
           variant='outlined'
           color='error'
           icon={<CreditCardOffOutlined />}
@@ -52,14 +52,12 @@ const OrderPage: NextPage<Props> = ({ order }) => {
             <CardContent>
               <Typography variant='h2'>
                 Resumen ({order.numberOfItems}{' '}
-                {order.numberOfItems > 1 ? 'productos' : 'producto'})
+                {order.numberOfItems > 1 ? 'products' : 'product'})
               </Typography>
               <Divider sx={{ my: 1 }} />
 
               <Box display='flex' justifyContent='space-between'>
-                <Typography variant='subtitle1'>
-                  Dirección de entrega
-                </Typography>
+                <Typography variant='subtitle1'>Delivery address</Typography>
               </Box>
 
               <Typography>
@@ -89,13 +87,11 @@ const OrderPage: NextPage<Props> = ({ order }) => {
               />
 
               <Box sx={{ mt: 3 }} display='flex' flexDirection='column'>
-                {/* TODO */}
-
                 <Box display='flex' flexDirection='column'>
                   {order.isPaid ? (
                     <Chip
                       sx={{ my: 2, flex: 1 }}
-                      label='Orden ya fue pagada'
+                      label='Order was already paid'
                       variant='outlined'
                       color='success'
                       icon={<CreditScoreOutlined />}
@@ -103,7 +99,7 @@ const OrderPage: NextPage<Props> = ({ order }) => {
                   ) : (
                     <Chip
                       sx={{ my: 2, flex: 1 }}
-                      label='Pendiente de pago'
+                      label='Pending payment'
                       variant='outlined'
                       color='error'
                       icon={<CreditCardOffOutlined />}
@@ -116,30 +112,30 @@ const OrderPage: NextPage<Props> = ({ order }) => {
         </Grid>
       </Grid>
     </AdminLayout>
-  )
-}
+  );
+};
 
 export const getServerSideProps: GetServerSideProps = async ({ req, query }) => {
     
-    const { id = '' } = query;
-    const order = await dbOrders.getOrderById( id.toString() );
+  const { id = '' } = query;
+  const order = await dbOrders.getOrderById( id.toString() );
 
-    if ( !order ) {
-        return {
-            redirect: {
-                destination: '/admin/orders',
-                permanent: false,
-            }
-        }
-    }
-
-
+  if ( !order ) {
     return {
-        props: {
-            order
-        }
-    }
-}
+      redirect: {
+        destination: '/admin/orders',
+        permanent: false,
+      },
+    };
+  }
+
+
+  return {
+    props: {
+      order,
+    },
+  };
+};
 
 
 export default OrderPage;

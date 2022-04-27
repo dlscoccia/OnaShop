@@ -5,7 +5,7 @@ import 'react-slideshow-image/dist/styles.css';
 import styles from './ProductSlideshow.module.css';
 
 interface Props {
-    images: string[]
+  images: string[]
 }
 
 export const ProductSlideshow: FC<Props> = ({ images }) => {
@@ -17,19 +17,19 @@ export const ProductSlideshow: FC<Props> = ({ images }) => {
     >
         {
             images.map( image =>  {
-                return (
+              return (
                     <div className={ styles['each-slide'] } key={ image }>
                         <div style={{
-                            backgroundImage: `url(${ image })`,
-                            backgroundSize: 'cover'
+                          backgroundImage: `url(${ image })`,
+                          backgroundSize: 'cover',
                         }}>
                         </div>
                     </div>
-                )
+              );
 
             })
         }
 
     </Slide>
-  )
-}
+  );
+};

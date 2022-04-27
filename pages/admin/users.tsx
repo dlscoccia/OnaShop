@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
-import { PeopleOutline } from '@mui/icons-material'
+import { PeopleOutline } from '@mui/icons-material';
 import useSWR from 'swr';
 
 import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
 import { Grid, Select, MenuItem } from '@mui/material';
 
-import { AdminLayout } from '../../components/layouts'
+import { AdminLayout } from '../../components/layouts';
 import { IUser } from '../../interfaces';
 import { tesloApi } from '../../api';
 
@@ -14,51 +14,51 @@ import { tesloApi } from '../../api';
 
 const UsersPage = () => {
 
-    const { data, error } = useSWR<IUser[]>('/api/admin/users');
-    const [ users, setUsers ] = useState<IUser[]>([]);
+  const { data, error } = useSWR<IUser[]>('/api/admin/users');
+  const [ users, setUsers ] = useState<IUser[]>([]);
 
 
-    useEffect(() => {
-      if (data) {
-          setUsers(data);
-      }
-    }, [data])
+  useEffect(() => {
+    if (data) {
+      setUsers(data);
+    }
+  }, [data]);
     
 
-    if ( !data && !error ) return (<></>);
+  if ( !data && !error ) return (<></>);
 
-    const onRoleUpdated = async( userId: string, newRole: string ) => {
+  const onRoleUpdated = async ( userId: string, newRole: string ) => {
 
-        const previosUsers = users.map( user => ({ ...user }));
-        const updatedUsers = users.map( user => ({
-            ...user,
-            role: userId === user._id ? newRole : user.role
-        }));
+    const previosUsers = users.map( user => ({ ...user }));
+    const updatedUsers = users.map( user => ({
+      ...user,
+      role: userId === user._id ? newRole : user.role,
+    }));
 
-        setUsers(updatedUsers);
+    setUsers(updatedUsers);
 
-        try {
+    try {
             
-            await tesloApi.put('/admin/users', {  userId, role: newRole });
+      await tesloApi.put('/admin/users', {  userId, role: newRole });
 
-        } catch (error) {
-            setUsers( previosUsers );
-            console.log(error);
-            alert('No se pudo actualizar el role del usuario');
-        }
-
+    } catch (error) {
+      setUsers( previosUsers );
+      console.log(error);
+      alert('No se pudo actualizar el role del usuario');
     }
 
+  };
 
-    const columns: GridColDef[] = [
-        { field: 'email', headerName: 'Correo', width: 250 },
-        { field: 'name', headerName: 'Nombre completo', width: 300 },
-        {
-            field: 'role', 
-            headerName: 'Rol', 
-            width: 300,
-            renderCell: ({row}: GridValueGetterParams) => {
-                return (
+
+  const columns: GridColDef[] = [
+    { field: 'email', headerName: 'Correo', width: 250 },
+    { field: 'name', headerName: 'Nombre completo', width: 300 },
+    {
+      field: 'role', 
+      headerName: 'Rol', 
+      width: 300,
+      renderCell: ({ row }: GridValueGetterParams) => {
+        return (
                     <Select
                         value={ row.role }
                         label="Rol"
@@ -70,17 +70,17 @@ const UsersPage = () => {
                         <MenuItem value='super-user'> Super User </MenuItem>
                         <MenuItem value='SEO'> SEO </MenuItem>
                     </Select>
-                )
-            }
-        },
-    ];
+        );
+      },
+    },
+  ];
 
-    const rows = users.map( user => ({
-        id: user._id,
-        email: user.email,
-        name: user.name,
-        role: user.role
-    }))
+  const rows = users.map( user => ({
+    id: user._id,
+    email: user.email,
+    name: user.name,
+    role: user.role,
+  }));
 
 
   return (
@@ -105,7 +105,7 @@ const UsersPage = () => {
 
 
     </AdminLayout>
-  )
-}
+  );
+};
 
-export default UsersPage
+export default UsersPage;
