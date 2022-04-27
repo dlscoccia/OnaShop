@@ -10,20 +10,29 @@ exports[`renders homepage unchanged 1`] = `
     src={null}
   />
   <ForwardRef(Typography)
+    align="center"
     component="h1"
-    variant="h1"
-  >
-    Tienda
-  </ForwardRef(Typography)>
-  <ForwardRef(Typography)
     sx={
       Object {
-        "mb": 1,
+        "mb": 2,
+        "mt": 5,
+      }
+    }
+    variant="h1"
+  >
+    Choose the perfect outfit!
+  </ForwardRef(Typography)>
+  <ForwardRef(Typography)
+    align="center"
+    sx={
+      Object {
+        "mb": 5,
+        "textDecoration": "underline",
       }
     }
     variant="h2"
   >
-    Todos los productos
+    All the products you need for your next trip
   </ForwardRef(Typography)>
   <FullScreenLoading />
 </ShopLayout>
