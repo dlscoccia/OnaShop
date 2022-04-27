@@ -13,41 +13,38 @@ import { IOrder } from '../../interfaces';
 
 const columns: GridColDef[] = [
   { field: 'id', headerName: 'ID', width: 100 },
-  { field: 'fullname', headerName: 'Nombre Completo', width: 300 },
+  { field: 'fullname', headerName: 'Full Name', width: 300 },
 
   {
     field: 'paid',
-    headerName: 'Pagada',
-    description: 'Muestra información si está pagada la orden o no',
+    headerName: 'Paid',
+    description: 'Shows information if the order is paid or not',
     width: 200,
     renderCell: (params: GridValueGetterParams) => {
-      return (
-        params.row.paid
-          ? <Chip color="success" label="Pagada" variant='outlined' />
-          : <Chip color="error" label="No pagada" variant='outlined' />
+      return params.row.paid ? (
+        <Chip color="success" label="Paid" variant="outlined" />
+      ) : (
+        <Chip color="error" label="No Paid" variant="outlined" />
       );
     },
   },
   {
-    field: 'orden',
-    headerName: 'Ver orden',
+    field: 'order',
+    headerName: 'View order',
     width: 200,
     sortable: false,
     renderCell: (params: GridValueGetterParams) => {
       return (
-               <NextLink href={`/orders/${ params.row.orderId }`} passHref>
-                    <Link underline='always'>
-                        Ver orden
-                    </Link>
-               </NextLink>
+        <NextLink href={`/orders/${params.row.orderId}`} passHref>
+          <Link underline="always">View order</Link>
+        </NextLink>
       );
     },
   },
 ];
 
-
 interface Props {
-  orders: IOrder[]
+  orders: IOrder[];
 }
 
 const HistoryPage: NextPage<Props> = ({ orders }) => {
@@ -60,14 +57,14 @@ const HistoryPage: NextPage<Props> = ({ orders }) => {
 
   return (
     <ShopLayout
-      title={'Historial de ordenes'}
-      pageDescription={'Historial de ordenes del cliente'}
+      title={'Order history'}
+      pageDescription={'Client order history'}
     >
-      <Typography variant='h1' component='h1'>
-        Historial de ordenes
+      <Typography variant="h1" component="h1" sx={{ mb: 5 }}>
+        Order history
       </Typography>
 
-      <Grid container className='fadeIn'>
+      <Grid container className="fadeIn">
         <Grid item xs={12} sx={{ height: 650, width: '100%' }}>
           <DataGrid
             rows={rows}

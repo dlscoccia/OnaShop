@@ -31,7 +31,7 @@ const OrderPage: NextPage<Props> = ({ order }) => {
   return (
     <AdminLayout
       title="Order Summary"
-      subTitle={`OrdenId: ${order._id}`}
+      subTitle={`OrderId: ${order._id}`}
       icon={<AirplaneTicketOutlined />}
     >
       {order.isPaid ? (

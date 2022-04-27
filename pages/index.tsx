@@ -22,11 +22,20 @@ const HomePage: NextPage = () => {
       pageDescription={'Find the trendy products here!'}
     >
       <Image src={banner} alt="hero banner" />
-      <Typography variant="h1" component="h1">
-        Tienda
+      <Typography
+        variant="h1"
+        component="h1"
+        sx={{ mt: 5, mb: 2 }}
+        align="center"
+      >
+        Choose the perfect outfit!
       </Typography>
-      <Typography variant="h2" sx={{ mb: 1 }}>
-        Todos los productos
+      <Typography
+        variant="h2"
+        sx={{ mb: 5, textDecoration: 'underline' }}
+        align="center"
+      >
+        All the products you need for your next trip
       </Typography>
 
       {isLoading ? <FullScreenLoading /> : <ProductList products={products} />}

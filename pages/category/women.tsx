@@ -18,8 +18,8 @@ const WomenPage: NextPage = () => {
 
   return (
     <ShopLayout
-      title={'Teslo-Shop - Women'}
-      pageDescription={'Encuentra los mejores productos de Teslo para ellas'}
+      title={'Ona Shop - Women'}
+      pageDescription={'Find the look that will make you smile'}
     >
       <Image src={banner} alt="women banner" />
       <Typography variant="h1" component="h1" sx={{ mt: 2, mb: 1 }}>

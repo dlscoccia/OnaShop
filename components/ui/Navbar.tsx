@@ -49,24 +49,24 @@ export const Navbar = () => {
           }}
           className="fadeIn"
         >
-          <NextLink href="/category/men" passHref>
-            <Link>
-              <Button color={asPath === '/category/men' ? 'primary' : 'info'}>
-                Men
-              </Button>
-            </Link>
-          </NextLink>
           <NextLink href="/category/women" passHref>
             <Link>
               <Button color={asPath === '/category/women' ? 'primary' : 'info'}>
-                Women
+                <Typography variant="h6">Women</Typography>
+              </Button>
+            </Link>
+          </NextLink>
+          <NextLink href="/category/men" passHref>
+            <Link>
+              <Button color={asPath === '/category/men' ? 'primary' : 'info'}>
+                <Typography variant="h6">Men</Typography>
               </Button>
             </Link>
           </NextLink>
           <NextLink href="/category/kid" passHref>
             <Link>
               <Button color={asPath === '/category/kid' ? 'primary' : 'info'}>
-                Kids
+                <Typography variant="h6">Kids</Typography>
               </Button>
             </Link>
           </NextLink>
@@ -105,7 +105,6 @@ export const Navbar = () => {
           </IconButton>
         )}
 
-        {/* Pantallas pequeñas */}
         <IconButton
           sx={{ display: { xs: 'flex', sm: 'none' } }}
           onClick={toggleSideMenu}
@@ -126,7 +125,7 @@ export const Navbar = () => {
           </Link>
         </NextLink>
 
-        <Button onClick={toggleSideMenu}>Menú</Button>
+        <Button onClick={toggleSideMenu}>Menu</Button>
       </Toolbar>
     </AppBar>
   );

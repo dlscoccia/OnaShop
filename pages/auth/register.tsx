@@ -55,16 +55,16 @@ const RegisterPage = () => {
   };
 
   return (
-    <AuthLayout title={'Ingresar'}>
+    <AuthLayout title={'Register'}>
       <form onSubmit={handleSubmit(onRegisterForm)} noValidate>
         <Box sx={{ width: 350, padding: '10px 20px' }}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <Typography variant="h1" component="h1">
-                Crear cuenta
+                Create your account
               </Typography>
               <Chip
-                label="No reconocemos ese usuario / contraseña"
+                label="We do not recognize that username / password"
                 color="error"
                 icon={<ErrorOutline />}
                 className="fadeIn"
@@ -74,12 +74,12 @@ const RegisterPage = () => {
 
             <Grid item xs={12}>
               <TextField
-                label="Nombre completo"
+                label="Full Name"
                 variant="filled"
                 fullWidth
                 {...register('name', {
-                  required: 'Este campo es requerido',
-                  minLength: { value: 2, message: 'Mínimo 2 caracteres' },
+                  required: 'This field is required',
+                  minLength: { value: 2, message: 'Min 2 characters' },
                 })}
                 error={!!errors.name}
                 helperText={errors.name?.message}
@@ -88,11 +88,11 @@ const RegisterPage = () => {
             <Grid item xs={12}>
               <TextField
                 type="email"
-                label="Correo"
+                label="Email"
                 variant="filled"
                 fullWidth
                 {...register('email', {
-                  required: 'Este campo es requerido',
+                  required: 'This field is required',
                   validate: validations.isEmail,
                 })}
                 error={!!errors.email}
@@ -101,13 +101,13 @@ const RegisterPage = () => {
             </Grid>
             <Grid item xs={12}>
               <TextField
-                label="Contraseña"
+                label="Password"
                 type="password"
                 variant="filled"
                 fullWidth
                 {...register('password', {
-                  required: 'Este campo es requerido',
-                  minLength: { value: 6, message: 'Mínimo 6 caracteres' },
+                  required: 'This field is required',
+                  minLength: { value: 6, message: 'Min 6 characters' },
                 })}
                 error={!!errors.password}
                 helperText={errors.password?.message}
@@ -122,7 +122,7 @@ const RegisterPage = () => {
                 size="large"
                 fullWidth
               >
-                Ingresar
+                Register
               </Button>
             </Grid>
 
@@ -135,7 +135,7 @@ const RegisterPage = () => {
                 }
                 passHref
               >
-                <Link underline="always">¿Ya tienes cuenta?</Link>
+                <Link underline="always">Do you already have an account?</Link>
               </NextLink>
             </Grid>
           </Grid>

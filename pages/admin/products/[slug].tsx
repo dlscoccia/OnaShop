@@ -31,7 +31,7 @@ import {
 import { AdminLayout } from '../../../components/layouts';
 import { IProduct } from '../../../interfaces';
 import { dbProducts } from '../../../database';
-import { tesloApi } from '../../../api';
+import { onaApi } from '../../../api';
 import { Product } from '../../../models';
 
 const validTypes = ['shirts', 'pants', 'hoodies', 'hats'];
@@ -128,7 +128,7 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
       for (const file of target.files) {
         const formData = new FormData();
         formData.append('file', file);
-        const { data } = await tesloApi.post<{ message: string }>(
+        const { data } = await onaApi.post<{ message: string }>(
           '/admin/upload',
           formData
         );
@@ -154,7 +154,7 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
     setIsSaving(true);
 
     try {
-      const { data } = await tesloApi({
+      const { data } = await onaApi({
         url: '/admin/products',
         method: form._id ? 'PUT' : 'POST',
         data: form,
@@ -174,8 +174,8 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
 
   return (
     <AdminLayout
-      title={'Producto'}
-      subTitle={`Editando: ${product.title}`}
+      title={'Product'}
+      subTitle={`Edit: ${product.title}`}
       icon={<DriveFileRenameOutline />}
     >
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -187,61 +187,61 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
             type="submit"
             disabled={isSaving}
           >
-            Guardar
+            Save
           </Button>
         </Box>
 
         <Grid container spacing={2}>
           <Grid item xs={12} sm={6}>
             <TextField
-              label="Título"
+              label="Title"
               variant="filled"
               fullWidth
               sx={{ mb: 1 }}
               {...register('title', {
-                required: 'Este campo es requerido',
-                minLength: { value: 2, message: 'Mínimo 2 caracteres' },
+                required: 'This field is required',
+                minLength: { value: 2, message: 'Min 2 chars' },
               })}
               error={!!errors.title}
               helperText={errors.title?.message}
             />
 
             <TextField
-              label="Descripción"
+              label="Description"
               variant="filled"
               fullWidth
               multiline
               sx={{ mb: 1 }}
               {...register('description', {
-                required: 'Este campo es requerido',
+                required: 'This field is required',
               })}
               error={!!errors.description}
               helperText={errors.description?.message}
             />
 
             <TextField
-              label="Inventario"
+              label="Stock"
               type="number"
               variant="filled"
               fullWidth
               sx={{ mb: 1 }}
               {...register('inStock', {
-                required: 'Este campo es requerido',
-                min: { value: 0, message: 'Mínimo de valor cero' },
+                required: 'This field is required',
+                min: { value: 0, message: 'Min value of zero' },
               })}
               error={!!errors.inStock}
               helperText={errors.inStock?.message}
             />
 
             <TextField
-              label="Precio"
+              label="Price"
               type="number"
               variant="filled"
               fullWidth
               sx={{ mb: 1 }}
               {...register('price', {
-                required: 'Este campo es requerido',
-                min: { value: 0, message: 'Mínimo de valor cero' },
+                required: 'This field is required',
+                min: { value: 0, message: 'Min value of zero' },
               })}
               error={!!errors.price}
               helperText={errors.price?.message}
@@ -250,7 +250,7 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
             <Divider sx={{ my: 1 }} />
 
             <FormControl sx={{ mb: 1 }}>
-              <FormLabel>Tipo</FormLabel>
+              <FormLabel>Type</FormLabel>
               <RadioGroup
                 row
                 value={getValues('type')}
@@ -270,7 +270,7 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
             </FormControl>
 
             <FormControl sx={{ mb: 1 }}>
-              <FormLabel>Género</FormLabel>
+              <FormLabel>Gender</FormLabel>
               <RadioGroup
                 row
                 value={getValues('gender')}
@@ -290,7 +290,7 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
             </FormControl>
 
             <FormGroup>
-              <FormLabel>Tallas</FormLabel>
+              <FormLabel>Sizes</FormLabel>
               {validSizes.map((size) => (
                 <FormControlLabel
                   key={size}
@@ -311,10 +311,10 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
               fullWidth
               sx={{ mb: 1 }}
               {...register('slug', {
-                required: 'Este campo es requerido',
+                required: 'This field is required',
                 validate: (val) =>
                   val.trim().includes(' ')
-                    ? 'No puede tener espacios en blanco'
+                    ? 'Can not contain spaces'
                     : undefined,
               })}
               error={!!errors.slug}
@@ -322,11 +322,11 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
             />
 
             <TextField
-              label="Etiquetas"
+              label="Tags"
               variant="filled"
               fullWidth
               sx={{ mb: 1 }}
-              helperText="Presiona [spacebar] para agregar"
+              helperText="Press [spacebar] to add"
               value={newTagValue}
               onChange={({ target }) => setNewTagValue(target.value)}
               onKeyUp={({ code }) =>
@@ -361,7 +361,7 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
             <Divider sx={{ my: 2 }} />
 
             <Box display="flex" flexDirection="column">
-              <FormLabel sx={{ mb: 1 }}>Imágenes</FormLabel>
+              <FormLabel sx={{ mb: 1 }}>Images</FormLabel>
               <Button
                 color="secondary"
                 fullWidth
@@ -369,7 +369,7 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
                 sx={{ mb: 3 }}
                 onClick={() => fileInputRef.current?.click()}
               >
-                Cargar imagen
+                Upload image
               </Button>
               <input
                 ref={fileInputRef}
@@ -381,7 +381,7 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
               />
 
               <Chip
-                label="Es necesario al 2 imagenes"
+                label="At least 2 images are required"
                 color="error"
                 variant="outlined"
                 sx={{
@@ -405,7 +405,7 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
                           color="error"
                           onClick={() => onDeleteImage(img)}
                         >
-                          Borrar
+                          Delete
                         </Button>
                       </CardActions>
                     </Card>

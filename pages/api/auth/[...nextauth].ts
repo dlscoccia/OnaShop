@@ -10,14 +10,14 @@ export default NextAuth({
       name: 'Custom Login',
       credentials: {
         email: {
-          label: 'Correo:',
+          label: 'Email:',
           type: 'email',
-          placeholder: 'correo@google.com',
+          placeholder: 'email@google.com',
         },
         password: {
-          label: 'Contraseña:',
+          label: 'Password:',
           type: 'password',
-          placeholder: 'Contraseña',
+          placeholder: 'Password',
         },
       },
       async authorize(credentials) {

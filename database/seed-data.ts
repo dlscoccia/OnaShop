@@ -75,7 +75,7 @@ export const initialData: SeedData = {
     {
       description:
         'Relaxed-fit shirt in a woven linen and cotton blend. Turn-down collar, classic button placket, and yoke at the back. Long sleeves with sleeve placket, link button, and button at cuffs. Open chest pocket and a gently rounded hem.',
-      images: ['1740280-00-A_0_2000.jpg', '1740280-00-A_1.webp'],
+      images: ['1740280-00-A_0_2000.jpg', '1740280-00-A_1.jpg'],
       inStock: 50,
       price: 29.99,
       sizes: ['XS', 'S', 'M', 'L'],
@@ -88,7 +88,7 @@ export const initialData: SeedData = {
     {
       description:
         "Introducing the Tesla Turbine Collection. Designed for style, comfort and everyday lifestyle, the Men's Turbine Short Sleeve Tee features a subtle, water-based Tesla wordmark across the chest and our T logo below the back collar. The lightweight material is double-dyed, creating a soft, casual style for ideal wear in any season. Made from 50% cotton and 50% polyester.",
-      images: ['1741416-00-A_0_2000.jpg', '1741416-00-A_1.webp'],
+      images: ['1741416-00-A_0_2000.jpg', '1741416-00-A_1.jpg'],
       inStock: 50,
       price: 14.99,
       sizes: ['M', 'L', 'XL', 'XXL'],
@@ -293,7 +293,7 @@ export const initialData: SeedData = {
     },
     {
       description:
-        'A beautifully quilted finish lends endless dimension to this anorak, a water-resistant pick complete with a cozy hood.',
+        'Short sweatshirt jacket in soft, cotton-blend fabric with soft, brushed inside. Lined drawstring hood, kangaroo pockets, and long sleeves. Ribbing at cuffs and hem.',
       images: ['7654420-00-A_0_2000.jpg', '7654420-00-A_1_2000.jpg'],
       inStock: 13,
       price: 79.99,
@@ -301,7 +301,7 @@ export const initialData: SeedData = {
       slug: 'cybertruck_graffiti_hoodie',
       type: 'hoodies',
       tags: ['hoodie'],
-      title: "'Women's Hooded Quilted Anorak'",
+      title: "Women's Hooded Quilted Anorak",
       gender: 'unisex',
     },
     {
@@ -371,7 +371,7 @@ export const initialData: SeedData = {
     },
     {
       description:
-        'Sleeveless top in ribbed viscose jersey with a sweetheart neckline at front.',
+        'Short, voluminous dress in woven fabric. Low-cut neckline at back with narrow ties at back of neck. Deep, gathered armholes and long, wide sleeves with details in embroidery and big hole mesh. Unlined.',
       images: ['1740290-00-A_0_2000.jpg', '1740290-00-A_1.jpg'],
       inStock: 10,
       price: 24.99,
@@ -379,7 +379,7 @@ export const initialData: SeedData = {
       slug: 'women_turbine_cropped_long_sleeve_tee',
       type: 'shirts',
       tags: ['shirt'],
-      title: 'Ribbed Top',
+      title: 'Voluminous Embroidery-detail Dress',
       gender: 'women',
     },
     {
@@ -397,7 +397,7 @@ export const initialData: SeedData = {
     },
     {
       description:
-        'Tank top in airy linen jersey with a round neckline straight-cut hem.',
+        'Fitted, sleeveless halterneck crop top in rib-knit fabric. Decorative plastic ring at front and narrow ties.',
       images: ['8765090-00-A_0_2000.jpg', '8765090-00-A_1.jpg'],
       inStock: 30,
       price: 14.99,
@@ -405,12 +405,12 @@ export const initialData: SeedData = {
       slug: 'women_t_logo_short_sleeve_scoop_neck_tee',
       type: 'shirts',
       tags: ['shirt'],
-      title: 'Linen Jersey Tank Top',
+      title: 'Rib-knit Halterneck Top',
       gender: 'women',
     },
     {
       description:
-        "A boho-chic top for your skirts, jeans and more, Free People's Hailey features shadow stripes for subtle detail.",
+        'Long, relaxed-fit blouse in softly draped satin. Low-cut V-neck at front, visible seam at back, and long, wide raglan sleeves with slit, drawstring, and long, narrow ties at cuffs. High slit at sides of hem.',
       images: ['8765100-00-A_0_2000.jpg', '8765100-00-A_1.jpg'],
       inStock: 16,
       price: 22.99,
@@ -418,12 +418,12 @@ export const initialData: SeedData = {
       slug: 'women_t_logo_long_sleeve_scoop_neck_tee',
       type: 'shirts',
       tags: ['shirt'],
-      title: 'Hailey Cotton Shadow-Striped Crop Top',
+      title: 'V-neck Satin Blouse',
       gender: 'women',
     },
     {
       description:
-        'Floral prints bring feminine flair to your wardrobe along with the eye-catching sleeves on this Vince Camuto blouse.',
+        'Fitted, sleeveless crop top in woven fabric. Extra-narrow shoulder straps, V-neck, and visible seams at front and back. Concealed zipper at one side. Unlined.',
       images: ['8765120-00-A_0_2000.jpg', '8765120-00-A_1.jpg'],
       inStock: 18,
       price: 18.99,
@@ -431,7 +431,7 @@ export const initialData: SeedData = {
       slug: 'women_small_wordmark_short_sleeve_v-neck_tee',
       type: 'shirts',
       tags: ['shirt'],
-      title: 'Floral Smocked Puffed Sleeve Blouse',
+      title: 'Sleeveless Top',
       gender: 'women',
     },
     {
@@ -444,7 +444,7 @@ export const initialData: SeedData = {
       slug: 'women_large_wordmark_short_sleeve_crew_neck_tee',
       type: 'shirts',
       tags: ['shirt'],
-      title: 'Crewneck T-Shirt',
+      title: 'Boxy Resort Shirt',
       gender: 'women',
     },
     {
@@ -457,7 +457,7 @@ export const initialData: SeedData = {
       slug: 'women_plaid_mode_tee',
       type: 'shirts',
       tags: ['shirt'],
-      title: 'Printed 3/4-Sleeve Tunic',
+      title: 'Tie-detail Crop Top',
       gender: 'women',
     },
     {
@@ -470,7 +470,7 @@ export const initialData: SeedData = {
       slug: 'women_powerwall_tee',
       type: 'shirts',
       tags: ['shirt'],
-      title: 'Tweed Jacket',
+      title: 'Linen Shirt',
       gender: 'women',
     },
     {
@@ -483,12 +483,12 @@ export const initialData: SeedData = {
       slug: 'women_corp_jacket',
       type: 'shirts',
       tags: ['shirt'],
-      title: 'Penelope T-Shirt',
+      title: 'Oversized Shirt Dress',
       gender: 'women',
     },
     {
       description:
-        "Super flirty with a cropped length and tied details, Free People's Kitty top finishes with soft puffed sleeves.",
+        'Fitted blazer in woven fabric. Notched lapels, one button at front, and welt front pockets. Decorative button at cuffs and vent at back. Lined.',
       images: ['1740270-00-A_0_2000.jpg', '1740270-00-A_1.jpg'],
       inStock: 162,
       price: 17.99,
@@ -496,12 +496,12 @@ export const initialData: SeedData = {
       slug: 'women_raven_joggers',
       type: 'shirts',
       tags: ['shirt'],
-      title: "Women's Kitty Cotton Front-Tie Crop Top",
+      title: 'Fitted Blazer',
       gender: 'women',
     },
     {
       description:
-        'A fun lace-up detail adds plenty of style to her active aesthetic with this cute Ideology T-shirt.',
+        'Set with a top and coordinated overall dress. Short-sleeved top in soft cotton jersey. Overall dress in lightweight cotton twill with a bib pocket and adjustable suspenders with metal fasteners.',
       images: ['1742694-00-A_1_2000.jpg', '1742694-00-A_3.jpg'],
       inStock: 10,
       price: 10.99,
@@ -509,7 +509,7 @@ export const initialData: SeedData = {
       slug: 'kids_cybertruck_long_sleeve_tee',
       type: 'shirts',
       tags: ['shirt'],
-      title: 'Big Girls Core Lace-Up T-Shirt',
+      title: '2-piece Cotton Set',
       gender: 'kid',
     },
     {
@@ -522,12 +522,12 @@ export const initialData: SeedData = {
       slug: 'kids_scribble_t_logo_tee',
       type: 'shirts',
       tags: ['shirt'],
-      title: 'Big Boys Cotton Jersey Crewneck T-Shirt',
+      title: '2-piece Cotton Set',
       gender: 'kid',
     },
     {
       description:
-        'The Kids Cybertruck Tee features the iconic Cybertruck graffiti wordmark and is made from 100% Peruvian cotton for maximum comfort.',
+        'Set with a top and coordinated shorts. Top in soft cotton jersey with dropped shoulders and flutter sleeves. Shorts in crêped jersey with a smocked, elasticized waistband.',
       images: ['8529342-00-A_0_2000.jpg', '8529342-00-A_1.jpg'],
       inStock: 10,
       price: 14.99,
@@ -535,20 +535,20 @@ export const initialData: SeedData = {
       slug: 'kids_cybertruck_tee',
       type: 'shirts',
       tags: ['shirt'],
-      title: 'Toddler Boys Solid Basic Tee',
+      title: '2-piece Jersey Set',
       gender: 'kid',
     },
     {
       description:
-        'This comfy and soft basic T-shirt by Epic Threads is a wardrobe staple.',
+        'Dressy yet casual set in airy, woven fabric with a short-sleeved shirt and shorts. Shirt with a band collar, buttons at front, yoke at back, and rounded hem. Knee-length shorts with elasticized drawstring waistband, diagonal side pockets, and a mock back pocket.',
       images: ['8529354-00-A_0_2000.jpg', '8529354-00-A_1.jpg'],
       inStock: 10,
-      price: 13.99,
+      price: 23.99,
       sizes: ['XS', 'S', 'M'],
       slug: 'kids_racing_stripe_tee',
       type: 'shirts',
       tags: ['shirt'],
-      title: 'Little Girls Solid Basic T-shirt',
+      title: '2-piece Shirt and Shorts Set',
       gender: 'kid',
     },
     {
@@ -626,19 +626,6 @@ export const initialData: SeedData = {
       type: 'shirts',
       tags: ['shirt'],
       title: 'Toddler Boys Graphic T-shirt',
-      gender: 'kid',
-    },
-    {
-      description:
-        'Camo tees are an essential part of any wardrobe. A camo print brings an updated feel to this soft basic tee from Epic Threads.',
-      images: ['1506211-00-A_0_2000.jpg', '1506211-00-A_1_2000.jpg'],
-      inStock: 10,
-      price: 13.99,
-      sizes: ['XS', 'S', 'M'],
-      slug: 'kids_corp_jacket',
-      type: 'shirts',
-      tags: ['shirt'],
-      title: 'Toddler Boys Camo Basic Tee',
       gender: 'kid',
     },
   ],

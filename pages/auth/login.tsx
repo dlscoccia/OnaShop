@@ -42,31 +42,31 @@ const LoginPage = () => {
   };
 
   return (
-    <AuthLayout title={'Ingresar'}>
+    <AuthLayout title={'Login'}>
       <form onSubmit={handleSubmit(onLoginUser)} noValidate>
         <Box sx={{ width: 350, padding: '10px 20px' }}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
-              <Typography variant='h1' component='h1'>
-                Iniciar Sesión
+              <Typography variant="h1" component="h1">
+                Enter into your account
               </Typography>
               <Chip
-                label='No reconocemos ese usuario / contraseña'
-                color='error'
+                label="We do not recognize that username / password"
+                color="error"
                 icon={<ErrorOutline />}
-                className='fadeIn'
+                className="fadeIn"
                 sx={{ display: showError ? 'flex' : 'none' }}
               />
             </Grid>
 
             <Grid item xs={12}>
               <TextField
-                type='email'
-                label='Correo'
-                variant='filled'
+                type="email"
+                label="Email"
+                variant="filled"
                 fullWidth
                 {...register('email', {
-                  required: 'Este campo es requerido',
+                  required: 'This field is required',
                   validate: validations.isEmail,
                 })}
                 error={!!errors.email}
@@ -75,13 +75,13 @@ const LoginPage = () => {
             </Grid>
             <Grid item xs={12}>
               <TextField
-                label='Contraseña'
-                type='password'
-                variant='filled'
+                label="Password"
+                type="password"
+                variant="filled"
                 fullWidth
                 {...register('password', {
-                  required: 'Este campo es requerido',
-                  minLength: { value: 6, message: 'Mínimo 6 caracteres' },
+                  required: 'This field is required',
+                  minLength: { value: 6, message: 'Min 6 characters' },
                 })}
                 error={!!errors.password}
                 helperText={errors.password?.message}
@@ -90,17 +90,17 @@ const LoginPage = () => {
 
             <Grid item xs={12}>
               <Button
-                type='submit'
-                color='secondary'
-                className='circular-btn'
-                size='large'
+                type="submit"
+                color="secondary"
+                className="circular-btn"
+                size="large"
                 fullWidth
               >
-                Ingresar
+                Login
               </Button>
             </Grid>
 
-            <Grid item xs={12} display='flex' justifyContent='end'>
+            <Grid item xs={12} display="flex" justifyContent="end">
               <NextLink
                 href={
                   router.query.p
@@ -109,28 +109,28 @@ const LoginPage = () => {
                 }
                 passHref
               >
-                <Link underline='always'>¿No tienes cuenta?</Link>
+                <Link underline="always">You do not have an account?</Link>
               </NextLink>
             </Grid>
 
             <Grid
               item
               xs={12}
-              display='flex'
-              flexDirection='column'
-              justifyContent='end'
+              display="flex"
+              flexDirection="column"
+              justifyContent="end"
             >
               <Divider sx={{ width: '100%', mb: 2 }} />
               {Object.values(providers).map((provider: any) => {
                 if (provider.id === 'credentials')
-                  return <div key='credentials'></div>;
+                  return <div key="credentials"></div>;
 
                 return (
                   <Button
                     key={provider.id}
-                    variant='outlined'
+                    variant="outlined"
                     fullWidth
-                    color='primary'
+                    color="primary"
                     sx={{ mb: 1 }}
                     onClick={() => signIn(provider.id)}
                   >

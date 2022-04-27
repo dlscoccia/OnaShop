@@ -53,64 +53,66 @@ const DashboardPage = () => {
 
   return (
     <AdminLayout
-        title='Dashboard'
-        subTitle='Estadisticas generales'
-        icon={ <DashboardOutlined /> }
+      title="Dashboard"
+      subTitle="General stats"
+      icon={<DashboardOutlined />}
     >
-        
-        <Grid container spacing={2}>
-            
-            <SummaryTile 
-                title={ numberOfOrders }
-                subTitle="Ordenes totales"
-                icon={ <CreditCardOutlined color="secondary" sx={{ fontSize: 40 }} /> }
+      <Grid container spacing={2}>
+        <SummaryTile
+          title={numberOfOrders}
+          subTitle="Total orders"
+          icon={<CreditCardOutlined color="secondary" sx={{ fontSize: 40 }} />}
+        />
+
+        <SummaryTile
+          title={paidOrders}
+          subTitle="Paid orders"
+          icon={<AttachMoneyOutlined color="success" sx={{ fontSize: 40 }} />}
+        />
+
+        <SummaryTile
+          title={notPaidOrders}
+          subTitle="Pending orders"
+          icon={<CreditCardOffOutlined color="error" sx={{ fontSize: 40 }} />}
+        />
+
+        <SummaryTile
+          title={numberOfClients}
+          subTitle="Clients"
+          icon={<GroupOutlined color="primary" sx={{ fontSize: 40 }} />}
+        />
+
+        <SummaryTile
+          title={numberOfProducts}
+          subTitle="Products"
+          icon={<CategoryOutlined color="warning" sx={{ fontSize: 40 }} />}
+        />
+
+        <SummaryTile
+          title={productsWithNoInventory}
+          subTitle="No stock"
+          icon={
+            <CancelPresentationOutlined color="error" sx={{ fontSize: 40 }} />
+          }
+        />
+
+        <SummaryTile
+          title={lowInventory}
+          subTitle="Low stock"
+          icon={
+            <ProductionQuantityLimitsOutlined
+              color="warning"
+              sx={{ fontSize: 40 }}
             />
+          }
+        />
 
-            <SummaryTile 
-                title={ paidOrders }
-                subTitle="Ordenes pagadas"
-                icon={ <AttachMoneyOutlined color="success" sx={{ fontSize: 40 }} /> }
-            />
-
-            <SummaryTile 
-                title={ notPaidOrders }
-                subTitle="Ordenes pendientes"
-                icon={ <CreditCardOffOutlined color="error" sx={{ fontSize: 40 }} /> }
-            />
-
-            <SummaryTile 
-                title={ numberOfClients }
-                subTitle="Clientes"
-                icon={ <GroupOutlined color="primary" sx={{ fontSize: 40 }} /> }
-            />
-
-            <SummaryTile 
-                title={ numberOfProducts }
-                subTitle="Productos"
-                icon={ <CategoryOutlined color="warning" sx={{ fontSize: 40 }} /> }
-            />
-
-            <SummaryTile 
-                title={ productsWithNoInventory }
-                subTitle="Sin existencias"
-                icon={ <CancelPresentationOutlined color="error" sx={{ fontSize: 40 }} /> }
-            />
-
-            <SummaryTile 
-                title={ lowInventory }
-                subTitle="Bajo inventario"
-                icon={ <ProductionQuantityLimitsOutlined color="warning" sx={{ fontSize: 40 }} /> }
-            />
-
-            <SummaryTile 
-                title={ refreshIn }
-                subTitle="Actualización en:"
-                icon={ <AccessTimeOutlined color="secondary" sx={{ fontSize: 40 }} /> }
-            />
-
-        </Grid>
-
-
+        <SummaryTile
+          title={refreshIn}
+          subTitle="Updating in:"
+          icon={<AccessTimeOutlined color="secondary" sx={{ fontSize: 40 }} />}
+        />
+      </Grid>
     </AdminLayout>
   );
 };

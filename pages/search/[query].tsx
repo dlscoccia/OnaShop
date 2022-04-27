@@ -20,25 +20,35 @@ const SearchPage: NextPage<Props> = ({ products, foundProducts, query }) => {
 
 
   return (
-    <ShopLayout title={'Teslo-Shop - Search'} pageDescription={'Encuentra los mejores productos de Teslo aquí'}>
-        <Typography variant='h1' component='h1'>Buscar productos</Typography>
+    <ShopLayout
+      title={'Ona Shop - Search'}
+      pageDescription={'Find the outfit for your next date'}
+    >
+      <Typography variant="h1" component="h1">
+        Find products
+      </Typography>
 
-        {
-            foundProducts 
-              ? <Typography variant='h2' sx={{ mb: 1 }} textTransform="capitalize">Término: { query }</Typography>
-              : (
-                    <Box display='flex'>
-                        <Typography variant='h2' sx={{ mb: 1 }}>No encontramos ningún produto</Typography>
-                        <Typography variant='h2' sx={{ ml: 1 }} color="secondary" textTransform="capitalize">{ query }</Typography>
-                    </Box>
-              )
-        }
+      {foundProducts ? (
+        <Typography variant="h2" sx={{ mb: 1 }} textTransform="capitalize">
+          Term: {query}
+        </Typography>
+      ) : (
+        <Box display="flex">
+          <Typography variant="h2" sx={{ mb: 1 }}>
+            We could&apos;t find any products for the term:
+          </Typography>
+          <Typography
+            variant="h2"
+            sx={{ ml: 1 }}
+            color="secondary"
+            textTransform="capitalize"
+          >
+            {query}
+          </Typography>
+        </Box>
+      )}
 
-        
-
-        
-        <ProductList products={ products } />
-        
+      <ProductList products={products} />
     </ShopLayout>
   );
 };

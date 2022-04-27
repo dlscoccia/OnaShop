@@ -39,42 +39,40 @@ const registerUser = async (req: NextApiRequest, res: NextApiResponse<Data>) => 
     });
   }
 
-  if ( name.length < 2 ) {
+  if (name.length < 2) {
     return res.status(400).json({
-      message: 'El nombre debe de ser de 2 caracteres',
+      message: 'Name must be at least 2 chars',
     });
   }
-    
-  if ( !validations.isValidEmail( email ) ) {
+
+  if (!validations.isValidEmail(email)) {
     return res.status(400).json({
-      message: 'El correo no tiene formato de correo',
+      message: 'Not a valid email',
     });
   }
-    
-    
+
   await db.connect();
   const user = await User.findOne({ email });
 
-  if ( user ) {
+  if (user) {
     return res.status(400).json({
-      message:'No puede usar ese correo',
+      message: 'Email already exists',
     });
   }
 
   const newUser = new User({
     email: email.toLocaleLowerCase(),
-    password: bcrypt.hashSync( password ),
+    password: bcrypt.hashSync(password),
     role: 'client',
     name,
   });
 
   try {
     await newUser.save({ validateBeforeSave: true });
-
   } catch (error) {
     console.log(error);
     return res.status(500).json({
-      message: 'Revisar logs del servidor',
+      message: 'View the server logs',
     });
   }
    
@@ -83,10 +81,10 @@ const registerUser = async (req: NextApiRequest, res: NextApiResponse<Data>) => 
   const token = jwt.signToken( _id, email );
 
   return res.status(200).json({
-    token, //jwt
+    token,
     user: {
-      email, 
-      role, 
+      email,
+      role,
       name,
     },
   });

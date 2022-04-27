@@ -15,8 +15,8 @@ const MenPage: NextPage = () => {
 
   return (
     <ShopLayout
-      title={'Teslo-Shop - Men'}
-      pageDescription={'Encuentra los mejores productos de Teslo para ellos'}
+      title={'Ona Shop - Men'}
+      pageDescription={'Find the look that will make you dream'}
     >
       <Image src={banner} alt="hero banner" />
       <Typography variant="h1" component="h1" sx={{ mt: 2, mb: 1 }}>

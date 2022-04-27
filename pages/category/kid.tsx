@@ -15,8 +15,8 @@ const KidPage: NextPage = () => {
 
   return (
     <ShopLayout
-      title={'Teslo-Shop - Kids'}
-      pageDescription={'Encuentra los mejores productos de Teslo para niños'}
+      title={'Ona Shop - Kids'}
+      pageDescription={'Find the look that will make you shine'}
     >
       <Image src={banner} alt="hero banner" />
       <Typography variant="h1" component="h1" sx={{ mt: 2, mb: 1 }}>
