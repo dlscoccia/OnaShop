@@ -7,7 +7,9 @@
     "start": "next start",
     "lint": "next lint",
     "git:push": "git add . && git commit -m 'deploy' && git push heroku main",
-    "deploy": "git add . && git commit -m 'deploy' && git push heroku main"
+    "deploy": "git add . && git commit -m 'deploy' && git push heroku main",
+    "prepare": "husky install",
+    "pre-commit": "yarn lint"
   },
   "dependencies": {
     "@emotion/react": "^11.7.1",
@@ -42,6 +44,7 @@
     "@typescript-eslint/parser": "^5.21.0",
     "eslint": "^8.14.0",
     "eslint-config-next": "12.0.10",
+    "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-prettier": "^4.0.0",

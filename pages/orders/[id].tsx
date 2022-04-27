@@ -46,14 +46,13 @@ const OrderPage: NextPage<Props> = ({ order }) => {
     setIsPaying(true);
 
     try {
-            
-      const { data } = await tesloApi.post('/orders/pay', {
+      // const { data } = await tesloApi.post('/orders/pay', {
+      await tesloApi.post('/orders/pay', {
         transactionId: details.id,
         orderId: order._id,
       });
 
       router.reload();
-
     } catch (error) {
       setIsPaying(false);
       console.log(error);

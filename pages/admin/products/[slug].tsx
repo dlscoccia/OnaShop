@@ -18,8 +18,6 @@ import {
   FormGroup,
   FormLabel,
   Grid,
-  ListItem,
-  Paper,
   Radio,
   RadioGroup,
   TextField,
@@ -41,21 +39,21 @@ const validGender = ['men', 'women', 'kid', 'unisex'];
 const validSizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL', 'XXXL'];
 
 interface FormData {
-  _id?: string
-  description: string
-  images: string[]
-  inStock: number
-  price: number
-  sizes: string[]
-  slug: string
-  tags: string[]
-  title: string
-  type: string
-  gender: string
+  _id?: string;
+  description: string;
+  images: string[];
+  inStock: number;
+  price: number;
+  sizes: string[];
+  slug: string;
+  tags: string[];
+  title: string;
+  type: string;
+  gender: string;
 }
 
 interface Props {
-  product: IProduct
+  product: IProduct;
 }
 
 const ProductAdminPage: FC<Props> = ({ product }) => {
@@ -76,7 +74,7 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
   });
 
   useEffect(() => {
-    const subscription = watch((value, { name, type }) => {
+    const subscription = watch((value, { name }) => {
       if (name === 'title') {
         const newSlug =
           value.title
@@ -97,7 +95,7 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
       return setValue(
         'sizes',
         currentSizes.filter((s) => s !== size),
-        { shouldValidate: true },
+        { shouldValidate: true }
       );
     }
 
@@ -132,7 +130,7 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
         formData.append('file', file);
         const { data } = await tesloApi.post<{ message: string }>(
           '/admin/upload',
-          formData,
+          formData
         );
         setValue('images', [...getValues('images'), data.message], {
           shouldValidate: true,
@@ -147,7 +145,7 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
     setValue(
       'images',
       getValues('images').filter((img) => img !== image),
-      { shouldValidate: true },
+      { shouldValidate: true }
     );
   };
 
@@ -181,12 +179,12 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
       icon={<DriveFileRenameOutline />}
     >
       <form onSubmit={handleSubmit(onSubmit)}>
-        <Box display='flex' justifyContent='end' sx={{ mb: 1 }}>
+        <Box display="flex" justifyContent="end" sx={{ mb: 1 }}>
           <Button
-            color='secondary'
+            color="secondary"
             startIcon={<SaveOutlined />}
             sx={{ width: '150px' }}
-            type='submit'
+            type="submit"
             disabled={isSaving}
           >
             Guardar
@@ -196,8 +194,8 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
         <Grid container spacing={2}>
           <Grid item xs={12} sm={6}>
             <TextField
-              label='Título'
-              variant='filled'
+              label="Título"
+              variant="filled"
               fullWidth
               sx={{ mb: 1 }}
               {...register('title', {
@@ -209,8 +207,8 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
             />
 
             <TextField
-              label='Descripción'
-              variant='filled'
+              label="Descripción"
+              variant="filled"
               fullWidth
               multiline
               sx={{ mb: 1 }}
@@ -222,9 +220,9 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
             />
 
             <TextField
-              label='Inventario'
-              type='number'
-              variant='filled'
+              label="Inventario"
+              type="number"
+              variant="filled"
               fullWidth
               sx={{ mb: 1 }}
               {...register('inStock', {
@@ -236,9 +234,9 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
             />
 
             <TextField
-              label='Precio'
-              type='number'
-              variant='filled'
+              label="Precio"
+              type="number"
+              variant="filled"
               fullWidth
               sx={{ mb: 1 }}
               {...register('price', {
@@ -264,7 +262,7 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
                   <FormControlLabel
                     key={option}
                     value={option}
-                    control={<Radio color='secondary' />}
+                    control={<Radio color="secondary" />}
                     label={capitalize(option)}
                   />
                 ))}
@@ -284,7 +282,7 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
                   <FormControlLabel
                     key={option}
                     value={option}
-                    control={<Radio color='secondary' />}
+                    control={<Radio color="secondary" />}
                     label={capitalize(option)}
                   />
                 ))}
@@ -308,8 +306,8 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
 
           <Grid item xs={12} sm={6}>
             <TextField
-              label='Slug - URL'
-              variant='filled'
+              label="Slug - URL"
+              variant="filled"
               fullWidth
               sx={{ mb: 1 }}
               {...register('slug', {
@@ -324,11 +322,11 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
             />
 
             <TextField
-              label='Etiquetas'
-              variant='filled'
+              label="Etiquetas"
+              variant="filled"
               fullWidth
               sx={{ mb: 1 }}
-              helperText='Presiona [spacebar] para agregar'
+              helperText="Presiona [spacebar] para agregar"
               value={newTagValue}
               onChange={({ target }) => setNewTagValue(target.value)}
               onKeyUp={({ code }) =>
@@ -344,7 +342,7 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
                 p: 0,
                 m: 0,
               }}
-              component='ul'
+              component="ul"
             >
               {getValues('tags').map((tag) => {
                 return (
@@ -352,8 +350,8 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
                     key={tag}
                     label={tag}
                     onDelete={() => onDeleteTag(tag)}
-                    color='primary'
-                    size='small'
+                    color="primary"
+                    size="small"
                     sx={{ ml: 1, mt: 1 }}
                   />
                 );
@@ -362,10 +360,10 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
 
             <Divider sx={{ my: 2 }} />
 
-            <Box display='flex' flexDirection='column'>
+            <Box display="flex" flexDirection="column">
               <FormLabel sx={{ mb: 1 }}>Imágenes</FormLabel>
               <Button
-                color='secondary'
+                color="secondary"
                 fullWidth
                 startIcon={<UploadOutlined />}
                 sx={{ mb: 3 }}
@@ -375,17 +373,17 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
               </Button>
               <input
                 ref={fileInputRef}
-                type='file'
+                type="file"
                 multiple
-                accept='image/png, image/gif, image/jpeg'
+                accept="image/png, image/gif, image/jpeg"
                 style={{ display: 'none' }}
                 onChange={onFilesSelected}
               />
 
               <Chip
-                label='Es necesario al 2 imagenes'
-                color='error'
-                variant='outlined'
+                label="Es necesario al 2 imagenes"
+                color="error"
+                variant="outlined"
                 sx={{
                   display: getValues('images').length < 2 ? 'flex' : 'none',
                 }}
@@ -396,15 +394,15 @@ const ProductAdminPage: FC<Props> = ({ product }) => {
                   <Grid item xs={4} sm={3} key={img}>
                     <Card>
                       <CardMedia
-                        component='img'
-                        className='fadeIn'
+                        component="img"
+                        className="fadeIn"
                         image={img}
                         alt={img}
                       />
                       <CardActions>
                         <Button
                           fullWidth
-                          color='error'
+                          color="error"
                           onClick={() => onDeleteImage(img)}
                         >
                           Borrar

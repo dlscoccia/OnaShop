@@ -25,7 +25,7 @@ export default NextAuth({
 
         return dbUsers.checkUserEmailPassword(
           credentials!.email,
-          credentials!.password,
+          credentials!.password
         );
       },
     }),
@@ -55,7 +55,7 @@ export default NextAuth({
           case 'oauth':
             token.user = await dbUsers.oAUthToDbUser(
               user?.email || '',
-              user?.name || '',
+              user?.name || ''
             );
             break;
 
@@ -68,7 +68,7 @@ export default NextAuth({
       return token;
     },
 
-    async session({ session, token, user }) {
+    async session({ session, token }) {
       session.accessToken = token.accessToken;
       session.user = token.user as any;
 

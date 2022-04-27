@@ -130,13 +130,11 @@ const ProductPage:NextPage<Props> = ({ product }) => {
 };
 
 
-export const getStaticPaths: GetStaticPaths = async (ctx) => {
-  
+export const getStaticPaths: GetStaticPaths = async () => {
   const productSlugs = await dbProducts.getAllProductSlugs();
 
-  
   return {
-    paths: productSlugs.map( ({ slug }) => ({
+    paths: productSlugs.map(({ slug }) => ({
       params: {
         slug,
       },
