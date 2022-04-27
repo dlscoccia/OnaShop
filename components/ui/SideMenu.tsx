@@ -79,14 +79,14 @@ export function SideMenu() {
                 <ListItemIcon>
                   <AccountCircleOutlined />
                 </ListItemIcon>
-                <ListItemText primary="Perfil" />
+                <ListItemText primary="Profile" />
               </ListItem>
 
               <ListItem button onClick={() => navigateTo('/orders/history')}>
                 <ListItemIcon>
                   <ConfirmationNumberOutlined />
                 </ListItemIcon>
-                <ListItemText primary="Mis Ordenes" />
+                <ListItemText primary="My Orders" />
               </ListItem>
             </>
           )}
@@ -99,7 +99,7 @@ export function SideMenu() {
             <ListItemIcon>
               <MaleOutlined />
             </ListItemIcon>
-            <ListItemText primary="Hombres" />
+            <ListItemText primary="Men" />
           </ListItem>
 
           <ListItem
@@ -110,7 +110,7 @@ export function SideMenu() {
             <ListItemIcon>
               <FemaleOutlined />
             </ListItemIcon>
-            <ListItemText primary="Mujeres" />
+            <ListItemText primary="Women" />
           </ListItem>
 
           <ListItem
@@ -121,7 +121,7 @@ export function SideMenu() {
             <ListItemIcon>
               <EscalatorWarningOutlined />
             </ListItemIcon>
-            <ListItemText primary="Niños" />
+            <ListItemText primary="Kids" />
           </ListItem>
 
           {isLoggedIn ? (
@@ -129,7 +129,7 @@ export function SideMenu() {
               <ListItemIcon>
                 <LoginOutlined />
               </ListItemIcon>
-              <ListItemText primary="Salir" />
+              <ListItemText primary="Logout" />
             </ListItem>
           ) : (
             <ListItem
@@ -139,7 +139,7 @@ export function SideMenu() {
               <ListItemIcon>
                 <VpnKeyOutlined />
               </ListItemIcon>
-              <ListItemText primary="Ingresar" />
+              <ListItemText primary="Login" />
             </ListItem>
           )}
 
@@ -160,20 +160,20 @@ export function SideMenu() {
                 <ListItemIcon>
                   <CategoryOutlined />
                 </ListItemIcon>
-                <ListItemText primary="Productos" />
+                <ListItemText primary="Products" />
               </ListItem>
               <ListItem button onClick={() => navigateTo('/admin/orders')}>
                 <ListItemIcon>
                   <ConfirmationNumberOutlined />
                 </ListItemIcon>
-                <ListItemText primary="Ordenes" />
+                <ListItemText primary="Orders" />
               </ListItem>
 
               <ListItem button onClick={() => navigateTo('/admin/users')}>
                 <ListItemIcon>
                   <AdminPanelSettings />
                 </ListItemIcon>
-                <ListItemText primary="Usuarios" />
+                <ListItemText primary="Users" />
               </ListItem>
             </>
           )}

@@ -36,27 +36,38 @@ export const Navbar = () => {
       <Toolbar>
         <NextLink href="/" passHref>
           <Link display="flex" alignItems="center">
-            <Typography variant="h6">Teslo |</Typography>
+            <Typography variant="h6">Ona |</Typography>
             <Typography sx={{ ml: 0.5 }}>Shop</Typography>
           </Link>
         </NextLink>
 
         <Box flex={1} />
 
-        <Box sx={{ display: isSearchVisible ? 'none' : { xs: 'none', sm: 'block' } }} className="fadeIn">
+        <Box
+          sx={{
+            display: isSearchVisible ? 'none' : { xs: 'none', sm: 'block' },
+          }}
+          className="fadeIn"
+        >
           <NextLink href="/category/men" passHref>
             <Link>
-              <Button color={asPath === '/category/men' ? 'primary' : 'info'}>Hombres</Button>
+              <Button color={asPath === '/category/men' ? 'primary' : 'info'}>
+                Men
+              </Button>
             </Link>
           </NextLink>
           <NextLink href="/category/women" passHref>
             <Link>
-              <Button color={asPath === '/category/women' ? 'primary' : 'info'}>Mujeres</Button>
+              <Button color={asPath === '/category/women' ? 'primary' : 'info'}>
+                Women
+              </Button>
             </Link>
           </NextLink>
           <NextLink href="/category/kid" passHref>
             <Link>
-              <Button color={asPath === '/category/kid' ? 'primary' : 'info'}>Niños</Button>
+              <Button color={asPath === '/category/kid' ? 'primary' : 'info'}>
+                Kids
+              </Button>
             </Link>
           </NextLink>
         </Box>
@@ -71,7 +82,9 @@ export const Navbar = () => {
             autoFocus
             value={searchTerm}
             onChange={(event) => setSearchTerm(event.target.value)}
-            onKeyPress={(event) => (event.key === 'Enter' ? onSearchTerm() : null)}
+            onKeyPress={(event) =>
+              event.key === 'Enter' ? onSearchTerm() : null
+            }
             type="text"
             placeholder="Buscar..."
             endAdornment={
@@ -93,14 +106,20 @@ export const Navbar = () => {
         )}
 
         {/* Pantallas pequeñas */}
-        <IconButton sx={{ display: { xs: 'flex', sm: 'none' } }} onClick={toggleSideMenu}>
+        <IconButton
+          sx={{ display: { xs: 'flex', sm: 'none' } }}
+          onClick={toggleSideMenu}
+        >
           <SearchOutlined />
         </IconButton>
 
         <NextLink href="/cart" passHref>
           <Link>
             <IconButton>
-              <Badge badgeContent={numberOfItems > 9 ? '+9' : numberOfItems} color="secondary">
+              <Badge
+                badgeContent={numberOfItems > 9 ? '+9' : numberOfItems}
+                color="secondary"
+              >
                 <ShoppingCartOutlined />
               </Badge>
             </IconButton>
