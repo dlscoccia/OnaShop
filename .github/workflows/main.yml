@@ -23,7 +23,11 @@ jobs:
         node-version: ${{ matrix.node-version }}
 
     - name: Build
+      env:
+        ## Environment variable for step 1
+        API_KEY: ${{secrets.MONGO_URL}} 
       run: |
         yarn install
+        yarn build
         yarn deploy
         
