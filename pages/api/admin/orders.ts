@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { db } from '../../../database';
-import { Order } from '../../../models';
-import { IOrder } from '../../../interfaces';
+import { db } from '../../../core/database';
+import { Order } from '../../../core/models';
+import { IOrder } from '../../../core/interfaces';
 
 type Data = 
 | { message: string } 

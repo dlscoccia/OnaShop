@@ -3,12 +3,11 @@ import type { AppProps } from 'next/app';
 import { SessionProvider } from 'next-auth/react';
 import { PayPalScriptProvider } from '@paypal/react-paypal-js';
 
-
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import { SWRConfig } from 'swr';
 
-import { lightTheme } from '../themes';
-import { AuthProvider, CartProvider, UiProvider } from '../context';
+import { lightTheme } from '../shared/themes';
+import { AuthProvider, CartProvider, UiProvider } from '../core/context';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

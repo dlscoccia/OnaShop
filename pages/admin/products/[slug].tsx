@@ -28,11 +28,11 @@ import {
   UploadOutlined,
 } from '@mui/icons-material';
 
-import { AdminLayout } from '../../../components/layouts';
-import { IProduct } from '../../../interfaces';
-import { dbProducts } from '../../../database';
-import { onaApi } from '../../../api';
-import { Product } from '../../../models';
+import { AdminLayout } from '../../../shared/components/layouts';
+import { IProduct } from '../../../core/interfaces';
+import { dbProducts } from '../../../core/database';
+import { onaApi } from '../../../core/api';
+import { Product } from '../../../core/models';
 
 const validTypes = ['shirts', 'pants', 'hoodies', 'hats'];
 const validGender = ['men', 'women', 'kid', 'unisex'];

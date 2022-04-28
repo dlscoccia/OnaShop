@@ -7,11 +7,11 @@ import { PayPalButtons } from '@paypal/react-paypal-js';
 import { Box, Card, CardContent, Divider, Grid, Typography, Chip, CircularProgress } from '@mui/material';
 import { CreditCardOffOutlined, CreditScoreOutlined } from '@mui/icons-material';
 
-import { ShopLayout } from '../../components/layouts/ShopLayout';
-import { CartList, OrderSummary } from '../../components/cart';
-import { dbOrders } from '../../database';
-import { IOrder } from '../../interfaces';
-import { onaApi } from '../../api';
+import { ShopLayout } from '../../shared/components/layouts/ShopLayout';
+import { CartList, OrderSummary } from '../../feature/cart';
+import { dbOrders } from '../../core/database';
+import { IOrder } from '../../core/interfaces';
+import { onaApi } from '../../core/api';
 
 export type OrderResponseBody = {
   id: string;

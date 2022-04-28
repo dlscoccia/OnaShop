@@ -1,8 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-import { db } from '../../../database';
-import { User } from '../../../models';
-import { jwt } from '../../../utils';
+import { db } from '../../../core/database';
+import { User } from '../../../core/models';
+import { jwt } from '../../../shared/utils';
 
 type Data =
   | { message: string }

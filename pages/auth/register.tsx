@@ -18,9 +18,9 @@ import {
 } from '@mui/material';
 import { ErrorOutline } from '@mui/icons-material';
 
-import { AuthContext } from '../../context';
-import { AuthLayout } from '../../components/layouts';
-import { validations } from '../../utils';
+import { AuthContext } from '../../core/context';
+import { AuthLayout } from '../../shared/components/layouts';
+import { validations } from '../../shared/utils';
 
 type FormData = {
   name: string;

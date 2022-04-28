@@ -2,13 +2,13 @@ import type { NextPage } from 'next';
 import Image from 'next/image';
 import { Typography } from '@mui/material';
 
-import { ShopLayout } from '../../components/layouts';
+import { ShopLayout } from '../../shared/components/layouts';
 
-import { ProductList } from '../../components/products';
-import { useProducts } from '../../hooks';
+import { ProductList } from '../../shared/components/products';
+import { useProducts } from '../../shared/hooks';
 
-import { FullScreenLoading } from '../../components/ui';
-import banner from '../../assets/men-banner.jpg';
+import { FullScreenLoading } from '../../shared/components/ui';
+import banner from '../../shared/assets/men-banner.jpg';
 
 const MenPage: NextPage = () => {
   const { products, isLoading } = useProducts('/products?gender=men');
@@ -19,7 +19,11 @@ const MenPage: NextPage = () => {
       pageDescription={'Find the look that will make you dream'}
     >
       <Image src={banner} alt="hero banner" />
-      <Typography variant="h1" component="h1" sx={{ mt: 2, mb: 1 }}>
+      <Typography
+        variant="h1"
+        component="h1"
+        sx={{ mt: 2, mb: 1, fontSize: '3.5rem' }}
+      >
         Men
       </Typography>
       <Typography variant="h2" sx={{ mb: 5 }}>

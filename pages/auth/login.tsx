@@ -7,16 +7,14 @@ import { Box, Button, Chip, Divider, Grid, Link, TextField, Typography } from '@
 import { ErrorOutline } from '@mui/icons-material';
 import { useForm } from 'react-hook-form';
 
-import { AuthLayout } from '../../components/layouts';
-import { validations } from '../../utils';
+import { AuthLayout } from '../../shared/components/layouts';
+import { validations } from '../../shared/utils';
 import { useRouter } from 'next/router';
 
-
 type FormData = {
-  email   : string,
-  password: string,
+  email: string;
+  password: string;
 };
-
 
 const LoginPage = () => {
   const router = useRouter();
@@ -44,10 +42,18 @@ const LoginPage = () => {
   return (
     <AuthLayout title={'Login'}>
       <form onSubmit={handleSubmit(onLoginUser)} noValidate>
-        <Box sx={{ width: 350, padding: '10px 20px' }}>
+        <Box
+          sx={{
+            width: 350,
+            padding: '30px 20px',
+            mt: 15,
+            backgroundColor: '#dad6d652',
+            borderRadius: 5,
+          }}
+        >
           <Grid container spacing={2}>
             <Grid item xs={12}>
-              <Typography variant="h1" component="h1">
+              <Typography variant="h1" component="h1" textAlign="center">
                 Enter into your account
               </Typography>
               <Chip
@@ -134,7 +140,7 @@ const LoginPage = () => {
                     sx={{ mb: 1 }}
                     onClick={() => signIn(provider.id)}
                   >
-                    {provider.name}
+                    Login with {provider.name}
                   </Button>
                 );
               })}

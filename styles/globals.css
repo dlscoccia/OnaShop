@@ -1,8 +1,15 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Raleway&display=swap');
 @keyframes fadeIn {
   0% {opacity: 0;}
   100% {opacity: 1;}
 } 
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Raleway', sans-serif;
+}
 
 @-webkit-keyframes fadeIn {
   0% {opacity: 0;}

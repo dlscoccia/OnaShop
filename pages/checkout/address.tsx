@@ -4,9 +4,9 @@ import { Box, Button, Grid, TextField, Typography } from '@mui/material';
 import Cookies from 'js-cookie';
 import { useForm } from 'react-hook-form';
 
-import { ShopLayout } from '../../components/layouts';
-import { countries } from '../../utils';
-import { CartContext } from '../../context';
+import { ShopLayout } from '../../shared/components/layouts';
+import { countries } from '../../shared/utils';
+import { CartContext } from '../../core/context';
 
 
 type FormData = {

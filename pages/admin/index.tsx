@@ -1,11 +1,21 @@
 import { useState, useEffect } from 'react';
 import useSWR from 'swr';
-import { AttachMoneyOutlined, CreditCardOffOutlined, CreditCardOutlined, DashboardOutlined, GroupOutlined, CategoryOutlined, CancelPresentationOutlined, ProductionQuantityLimitsOutlined, AccessTimeOutlined } from '@mui/icons-material';
+import {
+  AttachMoneyOutlined,
+  CreditCardOffOutlined,
+  CreditCardOutlined,
+  DashboardOutlined,
+  GroupOutlined,
+  CategoryOutlined,
+  CancelPresentationOutlined,
+  ProductionQuantityLimitsOutlined,
+  AccessTimeOutlined,
+} from '@mui/icons-material';
 
-import { AdminLayout } from '../../components/layouts';
+import { AdminLayout } from '../../shared/components/layouts';
 import { Grid, Typography } from '@mui/material';
-import { SummaryTile } from '../../components/admin';
-import { DashboardSummaryResponse } from '../../interfaces';
+import { SummaryTile } from '../../feature/admin';
+import { DashboardSummaryResponse } from '../../core/interfaces';
 
 const DashboardPage = () => {
 

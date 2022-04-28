@@ -1,9 +1,9 @@
 import { useContext, useEffect } from 'react';
 import { Box, Button, Card, CardContent, Divider, Grid, Typography } from '@mui/material';
 
-import { CartContext } from '../../context';
-import { ShopLayout } from '../../components/layouts/ShopLayout';
-import { CartList, OrderSummary } from '../../components/cart';
+import { CartContext } from '../../core/context';
+import { ShopLayout } from '../../shared/components/layouts/ShopLayout';
+import { CartList, OrderSummary } from '../../feature/cart';
 import { useRouter } from 'next/router';
 
 const CartPage = () => {

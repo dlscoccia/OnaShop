@@ -1,8 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { getSession } from 'next-auth/react';
-import { db } from '../../../database';
-import { IOrder } from '../../../interfaces';
-import { Product, Order } from '../../../models';
+import { db } from '../../../core/database';
+import { IOrder } from '../../../core/interfaces';
+import { Product, Order } from '../../../core/models';
 
 
 type Data = 

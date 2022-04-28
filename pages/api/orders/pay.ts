@@ -1,8 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import axios from 'axios';
-import { IPaypal } from '../../../interfaces';
-import { db } from '../../../database';
-import { Order } from '../../../models';
+import { IPaypal } from '../../../core/interfaces';
+import { db } from '../../../core/database';
+import { Order } from '../../../core/models';
 
 
 

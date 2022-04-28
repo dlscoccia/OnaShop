@@ -4,8 +4,8 @@ import { Box, Button, CardMedia, Grid, Link } from '@mui/material';
 import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
 import useSWR from 'swr';
 
-import { AdminLayout } from '../../components/layouts';
-import { IProduct  } from '../../interfaces';
+import { AdminLayout } from '../../shared/components/layouts';
+import { IProduct } from '../../core/interfaces';
 
 
 const columns: GridColDef[] = [

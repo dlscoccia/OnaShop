@@ -1,5 +1,5 @@
 {
-  "name": "fonzi-shop",
+  "name": "ona-shop",
   "private": true,
   "scripts": {
     "dev": "next dev",
