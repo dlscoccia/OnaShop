@@ -104,6 +104,7 @@ export const Navbar = () => {
             onClick={() => setIsSearchVisible(true)}
             className="fadeIn"
             sx={{ display: { xs: 'none', sm: 'flex' } }}
+            aria-label="search"
           >
             <SearchOutlined />
           </IconButton>
