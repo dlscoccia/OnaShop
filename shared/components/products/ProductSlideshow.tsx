@@ -10,28 +10,20 @@ interface Props {
 
 export const ProductSlideshow: FC<Props> = ({ images }) => {
   return (
-    <Slide
-        easing="ease"
-        duration={ 7000 }
-        indicators
-    >
-        {
-            images.map( image =>  {
-              return (
-                <div className={styles['each-slide']} key={image}>
-                  <div
-                    style={{
-                      backgroundImage: `url(${image})`,
-                      backgroundSize: 'auto',
-                      backgroundPosition: 'center',
-                    }}
-                  ></div>
-                </div>
-              );
-
-            })
-        }
-
+    <Slide easing="ease" duration={7000} indicators>
+      {images.map((image) => {
+        return (
+          <div className={styles['each-slide']} key={image}>
+            <div
+              style={{
+                backgroundImage: `url(${image})`,
+                backgroundSize: 'auto',
+                backgroundPosition: 'center',
+              }}
+            ></div>
+          </div>
+        );
+      })}
     </Slide>
   );
 };

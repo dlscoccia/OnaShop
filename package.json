@@ -9,8 +9,8 @@
     "test": "jest",
     "test:coverage": "jest --coverage",
     "prepare": "husky install",
-    "pre-commit": "yarn lint && yarn test:coverage",
-    "deploy": "git push heroku main"
+    "deploy": "git push heroku main",
+    "pre-commit": "yarn lint && yarn test:coverage && yarn deploy"
   },
   "dependencies": {
     "@emotion/react": "^11.7.1",
