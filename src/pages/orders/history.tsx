@@ -5,9 +5,9 @@ import { getSession } from 'next-auth/react';
 import { Typography, Grid, Chip, Link } from '@mui/material';
 import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
 
-import { ShopLayout } from '../../../shared/components/layouts';
-import { dbOrders } from '../../../core/database';
-import { IOrder } from '../../../core/interfaces';
+import { ShopLayout } from '../../shared/components/layouts';
+import { dbOrders } from '../../core/database';
+import { IOrder } from '../../core/interfaces';
 
 const columns: GridColDef[] = [
   { field: 'id', headerName: 'ID', width: 100 },

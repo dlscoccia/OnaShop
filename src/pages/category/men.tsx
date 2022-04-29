@@ -2,13 +2,13 @@ import type { NextPage } from 'next';
 import Image from 'next/image';
 import { Typography } from '@mui/material';
 
-import { ShopLayout } from '../../../shared/components/layouts';
+import { ShopLayout } from '../../shared/components/layouts';
 
-import { ProductList } from '../../../shared/components/products';
-import { useProducts } from '../../../shared/hooks';
+import { ProductList } from '../../shared/components/products';
+import { useProducts } from '../../shared/hooks';
 
-import { FullScreenLoading } from '../../../shared/components/ui';
-import banner from '../../../shared/assets/men-banner.jpg';
+import { FullScreenLoading } from '../../shared/components/ui';
+import banner from '../../shared/assets/men-banner.jpg';
 
 const MenPage: NextPage = () => {
   const { products, isLoading } = useProducts('/products?gender=men');

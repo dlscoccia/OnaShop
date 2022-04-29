@@ -16,10 +16,10 @@ import {
   CreditScoreOutlined,
 } from '@mui/icons-material';
 
-import { CartList, OrderSummary } from '../../../../feature/cart';
-import { dbOrders } from '../../../../core/database';
-import { IOrder } from '../../../../core/interfaces';
-import { AdminLayout } from '../../../../shared/components/layouts';
+import { CartList, OrderSummary } from '../../../feature/cart';
+import { dbOrders } from '../../../core/database';
+import { IOrder } from '../../../core/interfaces';
+import { AdminLayout } from '../../../shared/components/layouts';
 
 interface Props {
   order: IOrder;

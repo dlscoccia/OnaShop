@@ -15,9 +15,9 @@ import {
   Chip,
 } from '@mui/material';
 
-import { CartContext } from '../../../core/context';
-import { ShopLayout } from '../../../shared/components/layouts/ShopLayout';
-import { CartList, OrderSummary } from '../../../feature/cart';
+import { CartContext } from '../../core/context';
+import { ShopLayout } from '../../shared/components/layouts/ShopLayout';
+import { CartList, OrderSummary } from '../../feature/cart';
 
 const SummaryPage = () => {
   const router = useRouter();

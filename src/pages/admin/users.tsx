@@ -5,9 +5,9 @@ import useSWR from 'swr';
 import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
 import { Grid, Select, MenuItem } from '@mui/material';
 
-import { AdminLayout } from '../../../shared/components/layouts';
-import { IUser } from '../../../core/interfaces';
-import { onaApi } from '../../../core/api';
+import { AdminLayout } from '../../shared/components/layouts';
+import { IUser } from '../../core/interfaces';
+import { onaApi } from '../../core/api';
 
 const UsersPage = () => {
   const { data, error } = useSWR<IUser[]>('/api/admin/users');

@@ -4,17 +4,17 @@ import { useRouter } from 'next/router';
 
 import { Box, Button, Chip, Grid, Typography } from '@mui/material';
 
-import { CartContext } from '../../../core/context/cart/CartContext';
+import { CartContext } from '../../core/context/cart/CartContext';
 
-import { ShopLayout } from '../../../shared/components/layouts';
+import { ShopLayout } from '../../shared/components/layouts';
 import {
   ProductSlideshow,
   SizeSelector,
-} from '../../../shared/components/products';
-import { ItemCounter } from '../../../shared/components/ui/ItemCounter';
+} from '../../shared/components/products';
+import { ItemCounter } from '../../shared/components/ui/ItemCounter';
 
-import { dbProducts } from '../../../core/database';
-import { IProduct, ICartProduct, ISize } from '../../../core/interfaces';
+import { dbProducts } from '../../core/database';
+import { IProduct, ICartProduct, ISize } from '../../core/interfaces';
 
 interface Props {
   product: IProduct;

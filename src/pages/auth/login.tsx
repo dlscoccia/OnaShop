@@ -7,8 +7,8 @@ import { Box, Button, Chip, Divider, Grid, Link, TextField, Typography } from '@
 import { ErrorOutline } from '@mui/icons-material';
 import { useForm } from 'react-hook-form';
 
-import { AuthLayout } from '../../../shared/components/layouts';
-import { validations } from '../../../shared/utils';
+import { AuthLayout } from '../../shared/components/layouts';
+import { validations } from '../../shared/utils';
 import { useRouter } from 'next/router';
 
 type FormData = {

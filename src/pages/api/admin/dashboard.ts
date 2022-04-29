@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { db } from '../../../../core/database';
-import { Order, Product, User } from '../../../../core/models';
+import { db } from '../../../core/database';
+import { Order, Product, User } from '../../../core/models';
 
 type Data = {
   numberOfOrders: number;

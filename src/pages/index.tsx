@@ -2,13 +2,13 @@ import type { NextPage } from 'next';
 import Image from 'next/image';
 import { Typography } from '@mui/material';
 
-import { ShopLayout } from '../../shared/components/layouts';
+import { ShopLayout } from '../shared/components/layouts';
 
-import { ProductList } from '../../shared/components/products';
-import { useProducts } from '../../shared/hooks';
+import { ProductList } from '../shared/components/products';
+import { useProducts } from '../shared/hooks';
 
-import { FullScreenLoading } from '../../shared/components/ui';
-import banner from '../../shared/assets/hero-banner.jpg';
+import { FullScreenLoading } from '../shared/components/ui';
+import banner from '../shared/assets/hero-banner.jpg';
 import { useEffect } from 'react';
 
 const HomePage: NextPage = () => {

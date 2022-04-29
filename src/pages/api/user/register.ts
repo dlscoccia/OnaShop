@@ -1,9 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import bcrypt from 'bcryptjs';
 
-import { db } from '../../../../core/database';
-import { User } from '../../../../core/models';
-import { jwt, validations } from '../../../../shared/utils';
+import { db } from '../../../core/database';
+import { User } from '../../../core/models';
+import { jwt, validations } from '../../../shared/utils';
 
 type Data =
   | { message: string }

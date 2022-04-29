@@ -12,10 +12,10 @@ import {
   AccessTimeOutlined,
 } from '@mui/icons-material';
 
-import { AdminLayout } from '../../../shared/components/layouts';
+import { AdminLayout } from '../../shared/components/layouts';
 import { Grid, Typography } from '@mui/material';
-import { SummaryTile } from '../../../feature/admin';
-import { DashboardSummaryResponse } from '../../../core/interfaces';
+import { SummaryTile } from '../../feature/admin';
+import { DashboardSummaryResponse } from '../../core/interfaces';
 
 const DashboardPage = () => {
 

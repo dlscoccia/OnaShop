@@ -19,11 +19,11 @@ import {
   CreditScoreOutlined,
 } from '@mui/icons-material';
 
-import { ShopLayout } from '../../../shared/components/layouts/ShopLayout';
-import { CartList, OrderSummary } from '../../../feature/cart';
-import { dbOrders } from '../../../core/database';
-import { IOrder } from '../../../core/interfaces';
-import { onaApi } from '../../../core/api';
+import { ShopLayout } from '../../shared/components/layouts/ShopLayout';
+import { CartList, OrderSummary } from '../../feature/cart';
+import { dbOrders } from '../../core/database';
+import { IOrder } from '../../core/interfaces';
+import { onaApi } from '../../core/api';
 
 export type OrderResponseBody = {
   id: string;

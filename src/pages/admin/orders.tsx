@@ -4,8 +4,8 @@ import { Chip, Grid } from '@mui/material';
 import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
 import useSWR from 'swr';
 
-import { AdminLayout } from '../../../shared/components/layouts';
-import { IOrder, IUser } from '../../../core/interfaces';
+import { AdminLayout } from '../../shared/components/layouts';
+import { IOrder, IUser } from '../../core/interfaces';
 
 
 const columns: GridColDef[] = [
